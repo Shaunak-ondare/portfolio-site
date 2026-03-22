@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400&family=Inter:wght@300;400;500;700;800&display=swap');
 
 :root {
   --color-bg: #030303;
@@ -87,6 +87,7 @@ button {
 .section-title {
   font-size: 2.5rem;
   font-weight: 800;
+  font-family: 'Playfair Display', serif;
   margin-bottom: 3rem;
   position: relative;
   display: inline-block;

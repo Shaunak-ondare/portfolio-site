@@ -18,30 +18,34 @@ export const Hero = () => {
       
       <div className="container animate-fade-in" style={{ textAlign: 'center', zIndex: 10, position: 'relative' }}>
         <h1 style={{ 
-          fontSize: 'clamp(3rem, 8vw, 5rem)', 
-          fontWeight: 800, 
-          marginBottom: '1rem', 
-          letterSpacing: '-0.04em',
-          lineHeight: 1.1
+          fontSize: 'clamp(2.5rem, 6vw, 4rem)', 
+          fontWeight: 600, 
+          marginBottom: '0.5rem', 
+          letterSpacing: '-0.01em',
+          lineHeight: 1.2,
+          fontFamily: "'Playfair Display', serif"
         }}>
-          Hi, I am <span className="text-gradient">Shaun</span>.
+          Hi, I am <span className="text-gradient">Shaunak</span>.
         </h1>
         
         <h2 className="delay-1 animate-fade-in" style={{ 
-          fontSize: 'clamp(1.5rem, 4vw, 2.5rem)', 
-          fontWeight: 400, 
+          fontSize: 'clamp(0.9rem, 2vw, 1.1rem)', 
+          fontWeight: 300, 
           color: 'var(--color-text-muted)', 
-          marginBottom: '1.5rem' 
+          marginBottom: '2rem',
+          letterSpacing: '0.25em',
+          textTransform: 'uppercase'
         }}>
           DevOps Engineer
         </h2>
         
         <p className="delay-2 animate-fade-in" style={{ 
-          maxWidth: '600px', 
-          margin: '0 auto 3rem auto', 
+          maxWidth: '500px', 
+          margin: '0 auto 3.5rem auto', 
           color: 'var(--color-text-muted)', 
-          fontSize: '1.2rem',
-          lineHeight: 1.8
+          fontSize: '0.95rem',
+          lineHeight: 1.8,
+          fontWeight: 300
         }}>
           I build scalable infrastructure, automate release pipelines, and optimize multi-account cloud environments.
         </p>
@@ -49,27 +53,28 @@ export const Hero = () => {
         <a href="#projects" className="delay-3 animate-fade-in" style={{ 
             display: 'inline-flex', 
             alignItems: 'center', 
-            gap: '0.75rem', 
+            gap: '0.5rem', 
             border: '1px solid var(--color-border)', 
-            padding: '1rem 2rem', 
+            padding: '0.8rem 1.8rem', 
             borderRadius: '2px',
-            backgroundColor: 'rgba(5,5,5,0.8)',
+            backgroundColor: 'transparent',
             backdropFilter: 'blur(8px)',
-            fontSize: '1rem',
+            fontSize: '0.75rem',
             fontWeight: 500,
-            letterSpacing: '0.05em',
-            textTransform: 'uppercase'
+            letterSpacing: '0.15em',
+            textTransform: 'uppercase',
+            transition: 'all 0.3s ease'
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.backgroundColor = 'var(--color-text)';
             e.currentTarget.style.color = 'var(--color-bg)';
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.backgroundColor = 'rgba(5,5,5,0.8)';
+            e.currentTarget.style.backgroundColor = 'transparent';
             e.currentTarget.style.color = 'var(--color-text)';
           }}
           >
-          View My Work <ChevronDown size={18} />
+          View My Work <ChevronDown size={14} />
         </a>
       </div>
       

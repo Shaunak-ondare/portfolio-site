@@ -34,6 +34,11 @@ export const ParticleBackground = () => {
                         onHover: {
                             enable: true,
                             mode: "bubble",
+                            parallax: {
+                                enable: true,
+                                force: 150,
+                                smooth: 30,
+                            },
                         },
                     },
                     modes: {

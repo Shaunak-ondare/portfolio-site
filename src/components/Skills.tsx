@@ -67,7 +67,7 @@ export const Skills = () => {
              >
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem', color: 'var(--color-text)' }}>
                 {category.icon}
-                <h3 style={{ fontSize: '1.25rem', fontWeight: 700, fontFamily: "'Playfair Display', serif", letterSpacing: '0.02em', margin: 0 }}>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 700, letterSpacing: '0.02em', margin: 0 }}>
                   {category.title}
                 </h3>
               </div>

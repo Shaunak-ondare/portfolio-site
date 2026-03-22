@@ -1,5 +1,5 @@
-
 import { ExternalLink, Github } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 
 const projects = [
   {
@@ -23,11 +23,32 @@ const projects = [
 ];
 
 export const Projects = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+    
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+    
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="projects" style={{ padding: 'var(--section-padding)', position: 'relative', zIndex: 1 }}>
+    <section id="projects" ref={sectionRef} style={{ padding: 'var(--section-padding)', position: 'relative', zIndex: 1 }}>
       <div className="container">
-        <h2 className="section-title">Selected Works</h2>
-        
+        <h2 className={`section-title ${isVisible ? 'animate-fade-in' : ''}`} style={{ opacity: isVisible ? '' : 0 }}>Systems I’ve Built</h2>
+
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
@@ -35,7 +56,10 @@ export const Projects = () => {
           marginTop: '3rem'
         }}>
           {projects.map((project, index) => (
-            <div key={index} style={{
+            <div key={index} 
+              className={isVisible ? `animate-fade-in delay-${(index % 3) + 1}` : ''}
+              style={{
+              opacity: isVisible ? undefined : 0,
               backgroundColor: 'rgba(10, 10, 10, 0.4)',
               backdropFilter: 'blur(12px) saturate(180%)',
               WebkitBackdropFilter: 'blur(12px) saturate(180%)',
@@ -47,25 +71,25 @@ export const Projects = () => {
               flexDirection: 'column',
               height: '100%'
             }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'translateY(-5px)';
-              e.currentTarget.style.borderColor = 'var(--color-accent)';
-              e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 240, 255, 0.05)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.borderColor = 'var(--color-border)';
-              e.currentTarget.style.boxShadow = 'none';
-            }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-5px)';
+                e.currentTarget.style.borderColor = 'var(--color-accent)';
+                e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 240, 255, 0.05)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.borderColor = 'var(--color-border)';
+                e.currentTarget.style.boxShadow = 'none';
+              }}
             >
               <h3 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '1rem', letterSpacing: '-0.02em' }}>
                 {project.title}
               </h3>
-              
+
               <p style={{ color: 'var(--color-text-muted)', marginBottom: '2rem', flexGrow: 1, lineHeight: 1.7 }}>
                 {project.description}
               </p>
-              
+
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '2rem' }}>
                 {project.tags.map(tag => (
                   <span key={tag} style={{
@@ -81,7 +105,7 @@ export const Projects = () => {
                   </span>
                 ))}
               </div>
-              
+
               <div style={{ display: 'flex', gap: '1.5rem', borderTop: '1px solid var(--color-border)', paddingTop: '1.5rem' }}>
                 {project.links.github && (
                   <a href={project.links.github} aria-label="GitHub" style={{ color: 'var(--color-text)', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.9rem', opacity: 0.7, transition: 'opacity 0.2s' }}

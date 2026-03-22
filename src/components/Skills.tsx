@@ -1,4 +1,5 @@
 import { Terminal, Code, Cloud, RefreshCw, Shield, Server, Edit3 } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 
 const skillCategories = [
   {
@@ -39,14 +40,38 @@ const skillCategories = [
 ];
 
 export const Skills = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+    
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+    
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="skills" style={{ padding: 'var(--section-padding)', position: 'relative', zIndex: 1, borderTop: '1px solid var(--color-border)' }}>
+    <section id="skills" ref={sectionRef} style={{ padding: 'var(--section-padding)', position: 'relative', zIndex: 1 }}>
       <div className="container">
-        <h2 className="section-title">Core Skills &amp; Expertise</h2>
+        <h2 className={`section-title ${isVisible ? 'animate-fade-in' : ''}`} style={{ opacity: isVisible ? '' : 0 }}>Core Skills &amp; Expertise</h2>
         
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '2.5rem', marginTop: '2rem' }}>
-          {skillCategories.map(category => (
-            <div key={category.title} style={{
+          {skillCategories.map((category, index) => (
+            <div key={category.title} 
+             className={isVisible ? `animate-fade-in delay-${(index % 3) + 1}` : ''}
+             style={{
+              opacity: isVisible ? undefined : 0,
               display: 'flex',
               flexDirection: 'column',
               gap: '1rem',

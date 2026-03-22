@@ -22,8 +22,7 @@ export const Hero = () => {
           fontWeight: 600, 
           marginBottom: '0.5rem', 
           letterSpacing: '-0.01em',
-          lineHeight: 1.2,
-          fontFamily: "'Playfair Display', serif"
+          lineHeight: 1.2
         }}>
           Hi, I am <span className="text-gradient">Shaunak</span>.
         </h1>

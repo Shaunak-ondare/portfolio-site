@@ -33,16 +33,18 @@ export const ParticleBackground = () => {
                         },
                         onHover: {
                             enable: true,
-                            mode: "repulse",
+                            mode: "bubble",
                         },
                     },
                     modes: {
                         push: {
-                            quantity: 3,
+                            quantity: 4,
                         },
-                        repulse: {
-                            distance: 100,
-                            duration: 0.4,
+                        bubble: {
+                            distance: 250,
+                            size: 6,
+                            duration: 2,
+                            opacity: 1,
                         },
                     },
                 },
@@ -50,12 +52,23 @@ export const ParticleBackground = () => {
                     color: {
                         value: "#ffffff",
                     },
+                    shadow: {
+                        blur: 20,
+                        color: {
+                            value: "#ffffff",
+                        },
+                        enable: true,
+                        offset: {
+                            x: 0,
+                            y: 0,
+                        },
+                    },
                     links: {
                         enable: false,
                     },
                     move: {
                         enable: true,
-                        speed: 1,
+                        speed: 0.4,
                         direction: "none",
                         random: true,
                         straight: false,
@@ -66,16 +79,16 @@ export const ParticleBackground = () => {
                             enable: true,
                             width: 800,
                         },
-                        value: 50,
+                        value: 60,
                     },
                     opacity: {
-                        value: 0.3,
+                        value: { min: 0.3, max: 0.8 },
                     },
                     shape: {
                         type: "circle",
                     },
                     size: {
-                        value: { min: 1, max: 3 },
+                        value: { min: 1, max: 4.5 },
                     },
                 },
                 detectRetina: true,

@@ -17,14 +17,16 @@ export const Navbar = () => {
       top: 0,
       width: '100%',
       padding: scrolled ? '1rem 0' : '1.5rem 0',
-      backgroundColor: scrolled ? 'rgba(3,3,3,0.9)' : 'transparent',
-      backdropFilter: scrolled ? 'blur(10px)' : 'none',
-      borderBottom: scrolled ? '1px solid var(--color-border)' : '1px solid transparent',
-      transition: 'all 0.3s ease',
+      backgroundColor: scrolled ? 'rgba(5, 5, 5, 0.4)' : 'transparent',
+      backdropFilter: scrolled ? 'saturate(180%) blur(20px)' : 'none',
+      WebkitBackdropFilter: scrolled ? 'saturate(180%) blur(20px)' : 'none',
+      borderBottom: scrolled ? '1px solid rgba(255, 255, 255, 0.08)' : '1px solid transparent',
+      boxShadow: scrolled ? '0 4px 30px rgba(0, 0, 0, 0.5)' : 'none',
+      transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
       zIndex: 100
     }}>
       <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 2rem' }}>
-        <a href="#hero" style={{ fontSize: '1.25rem', fontWeight: 800, letterSpacing: '0.05em' }}>Shaunak.</a>
+        <a href="#hero" className="hover-gradient" style={{ fontSize: '1.25rem', fontWeight: 800, letterSpacing: '0.05em' }}>Shaunak.</a>
         
         <div style={{ display: 'flex', gap: '2rem' }}>
           <a href="#projects" style={{ fontSize: '0.9rem', fontWeight: 500 }}>Works</a>

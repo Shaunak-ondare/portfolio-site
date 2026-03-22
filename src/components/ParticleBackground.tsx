@@ -55,12 +55,12 @@ export const ParticleBackground = () => {
                 },
                 particles: {
                     color: {
-                        value: "#ffffff",
+                        value: "#00f0ff",
                     },
                     shadow: {
                         blur: 20,
                         color: {
-                            value: "#ffffff",
+                            value: "#00f0ff",
                         },
                         enable: true,
                         offset: {
@@ -98,7 +98,7 @@ export const ParticleBackground = () => {
                 },
                 detectRetina: true,
             }}
-            style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0 }}
+            style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0 }}
         />
     );
 };

@@ -24,7 +24,7 @@ const projects = [
 
 export const Projects = () => {
   return (
-    <section id="projects" style={{ padding: 'var(--section-padding)', backgroundColor: 'var(--color-bg)' }}>
+    <section id="projects" style={{ padding: 'var(--section-padding)', position: 'relative', zIndex: 1 }}>
       <div className="container">
         <h2 className="section-title">Selected Works</h2>
         
@@ -36,8 +36,10 @@ export const Projects = () => {
         }}>
           {projects.map((project, index) => (
             <div key={index} style={{
-              backgroundColor: 'var(--color-card-bg)',
-              border: '1px solid var(--color-border)',
+              backgroundColor: 'rgba(10, 10, 10, 0.4)',
+              backdropFilter: 'blur(12px) saturate(180%)',
+              WebkitBackdropFilter: 'blur(12px) saturate(180%)',
+              border: '1px solid rgba(255, 255, 255, 0.08)',
               padding: '2.5rem 2rem',
               borderRadius: '2px',
               transition: 'transform 0.3s ease, border-color 0.3s ease',
@@ -47,11 +49,13 @@ export const Projects = () => {
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'translateY(-5px)';
-              e.currentTarget.style.borderColor = 'var(--color-text-muted)';
+              e.currentTarget.style.borderColor = 'var(--color-accent)';
+              e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 240, 255, 0.05)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = 'translateY(0)';
               e.currentTarget.style.borderColor = 'var(--color-border)';
+              e.currentTarget.style.boxShadow = 'none';
             }}
             >
               <h3 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '1rem', letterSpacing: '-0.02em' }}>
@@ -67,10 +71,11 @@ export const Projects = () => {
                   <span key={tag} style={{
                     fontSize: '0.75rem',
                     padding: '0.25rem 0.75rem',
-                    backgroundColor: 'rgba(255,255,255,0.03)',
-                    border: '1px solid var(--color-border)',
+                    backgroundColor: 'rgba(0, 240, 255, 0.05)',
+                    border: '1px solid rgba(0, 240, 255, 0.2)',
                     borderRadius: '100px',
-                    color: 'var(--color-text-muted)'
+                    color: 'var(--color-accent)',
+                    letterSpacing: '0.05em'
                   }}>
                     {tag}
                   </span>

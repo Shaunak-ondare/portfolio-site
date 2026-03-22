@@ -4,7 +4,8 @@
   --color-bg: #030303;
   --color-text: #ffffff;
   --color-text-muted: #888888;
-  --color-accent: #ffffff;
+  --color-accent: #00f0ff;
+  --color-accent-alt: #a855f7;
   --color-border: #222222;
   --color-card-bg: #0a0a0a;
   --color-hover: #161616;
@@ -12,6 +13,11 @@
   --font-main: 'Google Sans', sans-serif;
   
   --section-padding: 6rem 2rem;
+}
+
+::selection {
+  background-color: rgba(0, 240, 255, 0.3);
+  color: #ffffff;
 }
 
 * {
@@ -105,8 +111,34 @@ button {
 }
 
 .text-gradient {
-  background: linear-gradient(180deg, #fff 0%, #777 100%);
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-alt) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.hover-gradient {
+  transition: all 0.3s ease;
+}
+
+.hover-gradient:hover {
+  background: linear-gradient(
+    135deg, 
+    #00f0ff 0%, 
+    #ff0055 33%, 
+    #a855f7 66%,
+    #00f0ff 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+  filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.8));
+}
+
+@keyframes shimmer {
+  to {
+    background-position: 200% center;
+  }
 }

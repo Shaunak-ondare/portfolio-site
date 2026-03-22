@@ -40,7 +40,7 @@ const skillCategories = [
 
 export const Skills = () => {
   return (
-    <section id="skills" style={{ padding: 'var(--section-padding)', backgroundColor: 'var(--color-card-bg)', borderTop: '1px solid var(--color-border)' }}>
+    <section id="skills" style={{ padding: 'var(--section-padding)', position: 'relative', zIndex: 1, borderTop: '1px solid var(--color-border)' }}>
       <div className="container">
         <h2 className="section-title">Core Skills &amp; Expertise</h2>
         
@@ -51,18 +51,22 @@ export const Skills = () => {
               flexDirection: 'column',
               gap: '1rem',
               padding: '2.5rem 2rem',
-              backgroundColor: 'var(--color-bg)',
-              border: '1px solid var(--color-border)',
+              backgroundColor: 'rgba(10, 10, 10, 0.4)',
+              backdropFilter: 'blur(12px) saturate(180%)',
+              WebkitBackdropFilter: 'blur(12px) saturate(180%)',
+              border: '1px solid rgba(255, 255, 255, 0.08)',
               borderRadius: '2px',
               transition: 'transform 0.3s ease, border-color 0.3s ease'
              }}
              onMouseEnter={(e) => {
                e.currentTarget.style.transform = 'translateY(-5px)';
-               e.currentTarget.style.borderColor = 'var(--color-text-muted)';
+               e.currentTarget.style.borderColor = 'var(--color-accent)';
+               e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 240, 255, 0.08)';
              }}
              onMouseLeave={(e) => {
                e.currentTarget.style.transform = 'translateY(0)';
                e.currentTarget.style.borderColor = 'var(--color-border)';
+               e.currentTarget.style.boxShadow = 'none';
              }}
              >
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem', color: 'var(--color-text)' }}>

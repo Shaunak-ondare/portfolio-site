@@ -1,6 +1,5 @@
 
 import { ParticleBackground } from './ParticleBackground';
-import { ChevronDown } from 'lucide-react';
 
 export const Hero = () => {
   return (
@@ -65,15 +64,19 @@ export const Hero = () => {
             transition: 'all 0.3s ease'
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.backgroundColor = 'var(--color-text)';
-            e.currentTarget.style.color = 'var(--color-bg)';
+            e.currentTarget.style.backgroundColor = 'rgba(0, 240, 255, 0.1)';
+            e.currentTarget.style.borderColor = 'var(--color-accent)';
+            e.currentTarget.style.color = 'var(--color-accent)';
+            e.currentTarget.style.boxShadow = '0 0 15px rgba(0, 240, 255, 0.3)';
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.backgroundColor = 'transparent';
+            e.currentTarget.style.borderColor = 'var(--color-border)';
             e.currentTarget.style.color = 'var(--color-text)';
+            e.currentTarget.style.boxShadow = 'none';
           }}
           >
-          View My Work <ChevronDown size={14} />
+          View My Work
         </a>
       </div>
       

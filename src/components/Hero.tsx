@@ -24,7 +24,7 @@ export const Hero = () => {
           letterSpacing: '-0.01em',
           lineHeight: 1.2
         }}>
-          Hi, I am <span className="text-gradient">Shaunak</span>.
+          Hi, I am Shaunak.
         </h1>
         
         <h2 className="delay-1 animate-fade-in" style={{ 
@@ -46,7 +46,7 @@ export const Hero = () => {
           lineHeight: 1.8,
           fontWeight: 300
         }}>
-          I build scalable infrastructure, automate release pipelines, and optimize multi-account cloud environments.
+          I design and deploy containerized applications with Docker and AWS, and build automated CI/CD pipelines for reliable, scalable systems.
         </p>
 
         <a href="#projects" className="delay-3 animate-fade-in" style={{ 

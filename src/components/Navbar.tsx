@@ -24,7 +24,7 @@ export const Navbar = () => {
       zIndex: 100
     }}>
       <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 2rem' }}>
-        <a href="#hero" style={{ fontSize: '1.25rem', fontWeight: 800, letterSpacing: '0.05em' }}>SHAUNAK.</a>
+        <a href="#hero" style={{ fontSize: '1.25rem', fontWeight: 800, letterSpacing: '0.05em' }}>Shaunak.</a>
         
         <div style={{ display: 'flex', gap: '2rem' }}>
           <a href="#projects" style={{ fontSize: '0.9rem', fontWeight: 500 }}>Works</a>

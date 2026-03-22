@@ -12,7 +12,7 @@ const projects = [
     title: 'CI/CD Pipeline Security Integration',
     description: 'Developed and debugged GitHub Actions workflows integrating OWASP Dependency Check. Resolved Java Runtime incompatibilities for maven plugins to enforce strict security gates before deployment.',
     tags: ['CI/CD', 'GitHub Actions', 'Maven', 'OWASP'],
-    links: { github: '#' }
+    links: { github: 'https://github.com/Shaunak-ondare/devsecops-pipeline' }
   },
   {
     title: 'Multi-Environment Infrastructure Automation',

@@ -1,73 +1,29 @@
-# React + TypeScript + Vite
+# Portfolio Site Walkthrough
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+I have successfully built your new minimalist, black-and-white portfolio website tailored for your DevOps engineering profile.
 
-Currently, two official plugins are available:
+## What Was Accomplished
+- **Project Structure**: Initialized a modern React + TypeScript application using Vite.
+- **Design System**: Implemented a pure minimalist monochrome theme using Vanilla CSS (`index.css`), with custom CSS variables, smooth scrolling, and elegant micro-animations (fade-ins, hover states).
+- **Hero Section**: Built a full-screen landing area (`Hero.tsx`) featuring your name, title, a brief introductory paragraph, and an interactive particle background using `tsparticles`. 
+- **Projects Section**: Created responsive project cards (`Projects.tsx`) highlighting your key accomplishments:
+  - Automated IAM Deletion Engine (Lambda & Python)
+  - CI/CD Pipeline Security Integration (OWASP & GitHub Actions)
+  - Multi-Environment Infrastructure Automation (Terraform)
+- **Skills Section**: Organically listed your core competencies (`Skills.tsx`) like AWS, Python/Boto3, CI/CD, and DevSecOps.
+- **Navigation & Footer**: Added a sticky navigation bar with a subtle blur effect that appears on scroll, alongside a minimalist footer.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Validation Results
+- Adapted the `tsparticles` initialization methodology to match the latest v3 `@tsparticles/react` engine API.
+- Verified that all TypeScript compilation issues are resolved.
+- Confirmed that `npm run build` completes with a clean bill of health and produces the optimized `dist/` bundle.
 
-## React Compiler
+## Next Steps
+You can view your site locally by running the Vite development server!
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+cd c:\Users\shaun\Documents\Projects\protfolio-site
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Feel free to open the components in your editor and tweak any text to dial in the specifics of your projects!

@@ -16,6 +16,7 @@ export const ParticleBackground = () => {
     if (!init) return null;
 
     return (
+        <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0, animation: 'hueShift 25s linear infinite' }}>
         <Particles
             id="tsparticles"
             options={{
@@ -98,7 +99,7 @@ export const ParticleBackground = () => {
                 },
                 detectRetina: true,
             }}
-            style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0 }}
         />
+        </div>
     );
 };

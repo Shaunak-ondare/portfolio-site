@@ -108,6 +108,18 @@ button {
   height: 2px;
   width: 60px;
   background-color: var(--color-accent);
+  transition: width 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 8px rgba(0, 240, 255, 0.5);
+}
+
+.section-title:hover::after {
+  width: 100%;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.8), 0 0 30px rgba(0, 240, 255, 0.6), 0 0 45px rgba(0, 240, 255, 0.4);
+}
+
+@keyframes hueShift {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
 }
 
 .text-gradient {

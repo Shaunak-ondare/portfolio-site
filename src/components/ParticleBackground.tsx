@@ -74,7 +74,7 @@ export const ParticleBackground = () => {
                     },
                     move: {
                         enable: true,
-                        speed: 0.4,
+                        speed: { min: 0.5, max: 3 },
                         direction: "none",
                         random: true,
                         straight: false,
@@ -85,16 +85,21 @@ export const ParticleBackground = () => {
                             enable: true,
                             width: 800,
                         },
-                        value: 60,
+                        value: 80,
                     },
                     opacity: {
-                        value: { min: 0.3, max: 0.8 },
+                        value: { min: 0.1, max: 1 },
+                        animation: {
+                            enable: true,
+                            speed: 1,
+                            sync: false,
+                        }
                     },
                     shape: {
                         type: "circle",
                     },
                     size: {
-                        value: { min: 1, max: 4.5 },
+                        value: { min: 0.5, max: 2.5 },
                     },
                 },
                 detectRetina: true,

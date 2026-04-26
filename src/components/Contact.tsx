@@ -29,26 +29,26 @@ export const Contact = () => {
               gap: '0.75rem',
               padding: '1rem 2rem',
               borderRadius: '12px',
-              backgroundColor: 'rgba(255, 255, 255, 0.05)',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
+              backgroundColor: 'rgba(255, 255, 255, 0.5)',
+              border: '1px solid rgba(19, 32, 55, 0.15)',
               backdropFilter: 'blur(12px)',
               WebkitBackdropFilter: 'blur(12px)',
-              color: 'var(--color-text)',
+              color: 'var(--color-hero-ink)',
               fontWeight: 500,
               transition: 'all 0.3s ease',
-              boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)'
+              boxShadow: '0 4px 30px rgba(19, 32, 55, 0.06)'
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-              e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+              e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.75)';
+              e.currentTarget.style.borderColor = 'rgba(15, 140, 255, 0.3)';
               e.currentTarget.style.transform = 'translateY(-2px)';
-              e.currentTarget.style.boxShadow = '0 8px 32px rgba(255, 255, 255, 0.15)';
+              e.currentTarget.style.boxShadow = '0 8px 32px rgba(15, 140, 255, 0.1)';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
-              e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+              e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
+              e.currentTarget.style.borderColor = 'rgba(19, 32, 55, 0.15)';
               e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.1)';
+              e.currentTarget.style.boxShadow = '0 4px 30px rgba(19, 32, 55, 0.06)';
             }}>
               <Download size={20} />
               View / Download Resume
@@ -60,21 +60,19 @@ export const Contact = () => {
               gap: '0.75rem',
               padding: '1rem 2rem',
               borderRadius: '12px',
-              backgroundColor: 'var(--color-accent)',
-              color: '#000',
+              background: 'linear-gradient(180deg, #0f8cff 0%, #0078df 100%)',
+              color: '#ffffff',
               fontWeight: 600,
               transition: 'all 0.3s ease',
-              boxShadow: '0 4px 20px rgba(0, 240, 255, 0.3)'
+              boxShadow: '0 4px 20px rgba(15, 140, 255, 0.3)'
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'translateY(-2px)';
-              e.currentTarget.style.boxShadow = '0 8px 32px rgba(0, 240, 255, 0.5)';
-              e.currentTarget.style.backgroundColor = '#00f0ff'; // Brighten slightly on hover or keep same but scale
+              e.currentTarget.style.boxShadow = '0 8px 32px rgba(15, 140, 255, 0.5)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 240, 255, 0.3)';
-              e.currentTarget.style.backgroundColor = 'var(--color-accent)';
+              e.currentTarget.style.boxShadow = '0 4px 20px rgba(15, 140, 255, 0.3)';
             }}>
               <Mail size={20} />
               Contact Me
@@ -99,27 +97,27 @@ export const Contact = () => {
                 width: '56px',
                 height: '56px',
                 borderRadius: '50%',
-                backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
+                backgroundColor: 'rgba(255, 255, 255, 0.45)',
+                border: '1px solid rgba(19, 32, 55, 0.12)',
                 backdropFilter: 'blur(12px)',
                 WebkitBackdropFilter: 'blur(12px)',
-                color: 'var(--color-text-muted)',
+                color: 'var(--color-hero-muted)',
                 transition: 'all 0.3s ease',
-                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.2)'
+                boxShadow: '0 4px 20px rgba(19, 32, 55, 0.06)'
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.color = 'var(--color-accent)';
-                e.currentTarget.style.borderColor = 'rgba(0, 240, 255, 0.3)';
-                e.currentTarget.style.backgroundColor = 'rgba(0, 240, 255, 0.05)';
+                e.currentTarget.style.color = 'var(--color-hero-dot-accent)';
+                e.currentTarget.style.borderColor = 'rgba(15, 140, 255, 0.35)';
+                e.currentTarget.style.backgroundColor = 'rgba(15, 140, 255, 0.08)';
                 e.currentTarget.style.transform = 'translateY(-4px)';
-                e.currentTarget.style.boxShadow = '0 10px 25px rgba(0, 240, 255, 0.15)';
+                e.currentTarget.style.boxShadow = '0 10px 25px rgba(15, 140, 255, 0.15)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.color = 'var(--color-text-muted)';
-                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.08)';
-                e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+                e.currentTarget.style.color = 'var(--color-hero-muted)';
+                e.currentTarget.style.borderColor = 'rgba(19, 32, 55, 0.12)';
+                e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.45)';
                 e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.2)';
+                e.currentTarget.style.boxShadow = '0 4px 20px rgba(19, 32, 55, 0.06)';
               }}>
                 {social.icon}
               </a>

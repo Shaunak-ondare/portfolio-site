@@ -60,10 +60,10 @@ export const Projects = () => {
               className={isVisible ? `animate-fade-in delay-${(index % 3) + 1}` : ''}
               style={{
               opacity: isVisible ? undefined : 0,
-              backgroundColor: 'rgba(10, 10, 10, 0.4)',
+              backgroundColor: 'rgba(255, 255, 255, 0.6)',
               backdropFilter: 'blur(12px) saturate(180%)',
               WebkitBackdropFilter: 'blur(12px) saturate(180%)',
-              border: '1px solid rgba(255, 255, 255, 0.08)',
+              border: '1px solid rgba(19, 32, 55, 0.12)',
               padding: '2.5rem 2rem',
               borderRadius: '2px',
               transition: 'transform 0.3s ease, border-color 0.3s ease',
@@ -73,20 +73,20 @@ export const Projects = () => {
             }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateY(-5px)';
-                e.currentTarget.style.borderColor = 'var(--color-accent)';
-                e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 240, 255, 0.05)';
+                e.currentTarget.style.borderColor = 'rgba(15, 140, 255, 0.5)';
+                e.currentTarget.style.boxShadow = '0 10px 30px rgba(15, 140, 255, 0.08)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.borderColor = 'var(--color-border)';
+                e.currentTarget.style.borderColor = 'rgba(19, 32, 55, 0.12)';
                 e.currentTarget.style.boxShadow = 'none';
               }}
             >
-              <h3 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '1rem', letterSpacing: '-0.02em' }}>
+              <h3 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '1rem', letterSpacing: '-0.02em', color: 'var(--color-hero-ink)' }}>
                 {project.title}
               </h3>
 
-              <p style={{ color: 'var(--color-text-muted)', marginBottom: '2rem', flexGrow: 1, lineHeight: 1.7 }}>
+              <p style={{ color: 'var(--color-hero-muted)', marginBottom: '2rem', flexGrow: 1, lineHeight: 1.7 }}>
                 {project.description}
               </p>
 
@@ -95,10 +95,10 @@ export const Projects = () => {
                   <span key={tag} style={{
                     fontSize: '0.75rem',
                     padding: '0.25rem 0.75rem',
-                    backgroundColor: 'rgba(0, 240, 255, 0.05)',
-                    border: '1px solid rgba(0, 240, 255, 0.2)',
+                    backgroundColor: 'rgba(15, 140, 255, 0.08)',
+                    border: '1px solid rgba(15, 140, 255, 0.25)',
                     borderRadius: '100px',
-                    color: 'var(--color-accent)',
+                    color: 'var(--color-hero-dot-accent)',
                     letterSpacing: '0.05em'
                   }}>
                     {tag}
@@ -106,9 +106,9 @@ export const Projects = () => {
                 ))}
               </div>
 
-              <div style={{ display: 'flex', gap: '1.5rem', borderTop: '1px solid var(--color-border)', paddingTop: '1.5rem' }}>
+              <div style={{ display: 'flex', gap: '1.5rem', borderTop: '1px solid rgba(19, 32, 55, 0.15)', paddingTop: '1.5rem' }}>
                 {project.links.github && (
-                  <a href={project.links.github} aria-label="GitHub" style={{ color: 'var(--color-text)', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.9rem', opacity: 0.7, transition: 'opacity 0.2s' }}
+                  <a href={project.links.github} aria-label="GitHub" style={{ color: 'var(--color-hero-ink)', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.9rem', opacity: 0.7, transition: 'opacity 0.2s' }}
                     onMouseEnter={e => e.currentTarget.style.opacity = '1'}
                     onMouseLeave={e => e.currentTarget.style.opacity = '0.7'}
                   >
@@ -116,7 +116,7 @@ export const Projects = () => {
                   </a>
                 )}
                 {project.links.live && (
-                  <a href={project.links.live} aria-label="Live Demo" style={{ color: 'var(--color-text)', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.9rem', opacity: 0.7, transition: 'opacity 0.2s' }}
+                  <a href={project.links.live} aria-label="Live Demo" style={{ color: 'var(--color-hero-ink)', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.9rem', opacity: 0.7, transition: 'opacity 0.2s' }}
                     onMouseEnter={e => e.currentTarget.style.opacity = '1'}
                     onMouseLeave={e => e.currentTarget.style.opacity = '0.7'}
                   >

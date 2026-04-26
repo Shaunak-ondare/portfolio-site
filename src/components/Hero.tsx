@@ -1,146 +1,107 @@
-import { ParticleBackground } from './ParticleBackground';
 import { Download } from 'lucide-react';
+import { useMemo, useState, useEffect } from 'react';
 
 export const Hero = () => {
+  const [greetingIndex, setGreetingIndex] = useState(0);
+  const greetings = [
+    "Hi", "Hello", "Namaste", "Hola", "Bonjour", 
+    "Ciao", "Konnichiwa", "Salaam", "Hej", "Privet"
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setGreetingIndex((prev) => (prev + 1) % greetings.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [greetings.length]);
+
+  const mapClusters = [
+    { className: 'hero-map__cluster hero-map__cluster--north', dots: 54 },
+    { className: 'hero-map__cluster hero-map__cluster--west', dots: 42 },
+    { className: 'hero-map__cluster hero-map__cluster--center', dots: 158 },
+    { className: 'hero-map__cluster hero-map__cluster--south', dots: 46 },
+    { className: 'hero-map__cluster hero-map__cluster--east', dots: 52 },
+  ];
+
+  // Generate stable random indices for blinking dots
+  const blinkingDots = useMemo(() => {
+    return mapClusters.map(cluster => {
+      const indices = new Set<number>();
+      const count = Math.floor(cluster.dots * 0.25); // 25% of dots will blink
+      while(indices.size < count) {
+        indices.add(Math.floor(Math.random() * cluster.dots));
+      }
+      return Array.from(indices);
+    });
+  }, []);
+
   return (
-    <section id="hero" style={{ 
-      position: 'relative', 
-      height: '100vh', 
-      display: 'flex', 
-      flexDirection: 'column', 
-      alignItems: 'center', 
-      justifyContent: 'center', 
-      overflow: 'hidden',
-      padding: '0 2rem'
-    }}>
-      <ParticleBackground />
-      
-      <div className="container animate-fade-in" style={{ textAlign: 'center', zIndex: 10, position: 'relative' }}>
-        <h1 style={{ 
-          fontSize: 'clamp(2.5rem, 6vw, 4rem)', 
-          fontWeight: 600, 
-          marginBottom: '0.5rem', 
-          letterSpacing: '-0.01em',
-          lineHeight: 1.2
-        }}>
-          Hi, I am Shaunak.
-        </h1>
-        
-        <h2 className="delay-1 animate-fade-in" style={{ 
-          fontSize: 'clamp(0.9rem, 2vw, 1.1rem)', 
-          fontWeight: 300, 
-          color: 'var(--color-text-muted)', 
-          marginBottom: '2rem',
-          letterSpacing: '0.25em',
-          textTransform: 'uppercase'
-        }}>
-          DevOps Engineer
-        </h2>
-        
-        <p className="delay-2 animate-fade-in" style={{ 
-          maxWidth: '500px', 
-          margin: '0 auto 3.5rem auto', 
-          color: 'var(--color-text-muted)', 
-          fontSize: '0.95rem',
-          lineHeight: 1.8,
-          fontWeight: 300
-        }}>
-          I design and deploy containerized applications with Docker and AWS, and build automated CI/CD pipelines for reliable, scalable systems.
-        </p>
+    <section id="hero" className="hero-section">
+      <div className="hero-shell">
+        <div className="container hero-layout">
+          <div className="hero-copy">
+            <p className="hero-eyebrow animate-fade-in">DevOps & Cloud Infrastructure Engineer</p>
 
-        <div className="delay-3 animate-fade-in" style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-          <a href="#projects" style={{ 
-              display: 'inline-flex', 
-              alignItems: 'center', 
-              gap: '0.5rem', 
-              border: '1px solid rgba(0, 240, 255, 0.3)', 
-              padding: '0.8rem 1.8rem', 
-              borderRadius: '12px',
-              backgroundColor: 'rgba(0, 240, 255, 0.08)',
-              backdropFilter: 'blur(12px)',
-              WebkitBackdropFilter: 'blur(12px)',
-              boxShadow: '0 4px 30px rgba(0, 240, 255, 0.15)',
-              fontSize: '0.75rem',
-              fontWeight: 600,
-              letterSpacing: '0.15em',
-              textTransform: 'uppercase',
-              transition: 'all 0.3s ease',
-              color: '#ffffff',
-              textShadow: '0 0 8px rgba(0, 240, 255, 0.3)'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = 'rgba(0, 240, 255, 0.2)';
-              e.currentTarget.style.borderColor = 'rgba(0, 240, 255, 0.6)';
-              e.currentTarget.style.transform = 'translateY(-2px)';
-              e.currentTarget.style.boxShadow = '0 8px 32px rgba(0, 240, 255, 0.4), inset 0 0 15px rgba(0, 240, 255, 0.2)';
-              e.currentTarget.style.textShadow = '0 0 12px rgba(255, 255, 255, 0.8)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = 'rgba(0, 240, 255, 0.08)';
-              e.currentTarget.style.borderColor = 'rgba(0, 240, 255, 0.3)';
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 4px 30px rgba(0, 240, 255, 0.15)';
-              e.currentTarget.style.textShadow = '0 0 8px rgba(0, 240, 255, 0.3)';
-            }}
-            >
-            View My Work
-          </a>
+            <h1 className="hero-title delay-1 animate-fade-in">
+              <span 
+                key={greetingIndex}
+                className="animate-word-swap"
+                style={{ 
+                  display: 'inline-block', 
+                  minWidth: '140px',
+                  color: 'var(--color-hero-dot-accent)'
+                }}
+              >
+                {greetings[greetingIndex]},
+              </span>
+              <br />
+              I am Shaunak, a DevOps Engineer from Gadchiroli, Maharashtra.
+            </h1>
 
-          <a href="/Shaunak_Resume.pdf" target="_blank" rel="noopener noreferrer" style={{ 
-              display: 'inline-flex', 
-              alignItems: 'center', 
-              gap: '0.5rem', 
-              border: '1px solid rgba(0, 240, 255, 0.3)', 
-              padding: '0.8rem 1.8rem', 
-              borderRadius: '12px',
-              backgroundColor: 'rgba(0, 240, 255, 0.08)',
-              backdropFilter: 'blur(12px)',
-              WebkitBackdropFilter: 'blur(12px)',
-              boxShadow: '0 4px 30px rgba(0, 240, 255, 0.15)',
-              fontSize: '0.75rem',
-              fontWeight: 600,
-              letterSpacing: '0.15em',
-              textTransform: 'uppercase',
-              transition: 'all 0.3s ease',
-              color: '#ffffff',
-              textShadow: '0 0 8px rgba(0, 240, 255, 0.3)'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = 'rgba(0, 240, 255, 0.2)';
-              e.currentTarget.style.borderColor = 'rgba(0, 240, 255, 0.6)';
-              e.currentTarget.style.transform = 'translateY(-2px)';
-              e.currentTarget.style.boxShadow = '0 8px 32px rgba(0, 240, 255, 0.4), inset 0 0 15px rgba(0, 240, 255, 0.2)';
-              e.currentTarget.style.textShadow = '0 0 12px rgba(255, 255, 255, 0.8)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = 'rgba(0, 240, 255, 0.08)';
-              e.currentTarget.style.borderColor = 'rgba(0, 240, 255, 0.3)';
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 4px 30px rgba(0, 240, 255, 0.15)';
-              e.currentTarget.style.textShadow = '0 0 8px rgba(0, 240, 255, 0.3)';
-            }}
-            >
-            <Download size={16} />
-            View Resume
-          </a>
+            <p className="hero-description delay-2 animate-fade-in">
+              I build resilient AWS infrastructure, streamlined container workflows, and automated CI/CD pipelines that help teams ship reliably at scale.
+            </p>
+
+            <div className="hero-actions delay-3 animate-fade-in">
+              <a href="#projects" className="hero-button hero-button--primary">
+                Explore Projects
+              </a>
+
+              <a href="/Shaunak_Resume.pdf" target="_blank" rel="noopener noreferrer" className="hero-button hero-button--secondary">
+                <Download size={18} />
+                View Resume
+              </a>
+            </div>
+          </div>
+
+          <div className="hero-visual" aria-hidden="true">
+            <div className="hero-map">
+              <div className="hero-map__halo hero-map__halo--one" />
+              <div className="hero-map__halo hero-map__halo--two" />
+
+              {mapClusters.map((cluster, clusterIndex) => (
+                <div key={cluster.className} className={cluster.className}>
+                  {Array.from({ length: cluster.dots }).map((_, index) => {
+                    const isBlinking = blinkingDots[clusterIndex].includes(index);
+                    const blinkDuration = isBlinking ? `${(1.8 + Math.random() * 3).toFixed(2)}s` : undefined;
+                    const blinkDelay = isBlinking ? `${(Math.random() * 4).toFixed(2)}s` : undefined;
+                    
+                    return (
+                      <span
+                        key={`${cluster.className}-${index}`}
+                        className={`hero-map__dot ${isBlinking ? 'hero-map__dot--accent' : ''}`}
+                        style={isBlinking ? {
+                          '--blink-duration': blinkDuration,
+                          '--blink-delay': blinkDelay,
+                        } as React.CSSProperties : undefined}
+                      />
+                    );
+                  })}
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
-      </div>
-      
-      <div style={{
-        position: 'absolute',
-        bottom: '2rem',
-        left: '50%',
-        transform: 'translateX(-50%)',
-        zIndex: 10,
-        opacity: 0.5,
-        animation: 'fadeIn 2s ease-out forwards 1.5s'
-      }}>
-        <div style={{
-          width: '1px',
-          height: '60px',
-          background: 'linear-gradient(to bottom, var(--color-text) 0%, transparent 100%)',
-          margin: '0 auto'
-        }} />
       </div>
     </section>
   );

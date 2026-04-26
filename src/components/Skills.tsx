@@ -76,32 +76,32 @@ export const Skills = () => {
               flexDirection: 'column',
               gap: '1rem',
               padding: '2.5rem 2rem',
-              backgroundColor: 'rgba(10, 10, 10, 0.4)',
+              backgroundColor: 'rgba(255, 255, 255, 0.6)',
               backdropFilter: 'blur(12px) saturate(180%)',
               WebkitBackdropFilter: 'blur(12px) saturate(180%)',
-              border: '1px solid rgba(255, 255, 255, 0.08)',
+              border: '1px solid rgba(19, 32, 55, 0.12)',
               borderRadius: '2px',
               transition: 'transform 0.3s ease, border-color 0.3s ease'
              }}
              onMouseEnter={(e) => {
                e.currentTarget.style.transform = 'translateY(-5px)';
-               e.currentTarget.style.borderColor = 'var(--color-accent)';
-               e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 240, 255, 0.08)';
+               e.currentTarget.style.borderColor = 'rgba(15, 140, 255, 0.5)';
+               e.currentTarget.style.boxShadow = '0 10px 30px rgba(15, 140, 255, 0.1)';
              }}
              onMouseLeave={(e) => {
                e.currentTarget.style.transform = 'translateY(0)';
-               e.currentTarget.style.borderColor = 'var(--color-border)';
+               e.currentTarget.style.borderColor = 'rgba(19, 32, 55, 0.12)';
                e.currentTarget.style.boxShadow = 'none';
              }}
              >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem', color: 'var(--color-text)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem', color: 'var(--color-hero-ink)' }}>
                 {category.icon}
                 <h3 style={{ fontSize: '1.25rem', fontWeight: 700, letterSpacing: '0.02em', margin: 0 }}>
                   {category.title}
                 </h3>
               </div>
               
-              <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', color: 'var(--color-text-muted)', margin: 0, paddingLeft: '0.5rem' }}>
+              <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', color: 'var(--color-hero-muted)', margin: 0, paddingLeft: '0.5rem' }}>
                 {category.skills.map(skill => (
                   <li key={skill} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', fontSize: '1rem', lineHeight: 1.4 }}>
                     <span style={{ width: '4px', height: '4px', backgroundColor: 'var(--color-text-muted)', borderRadius: '50%', flexShrink: 0 }}></span>

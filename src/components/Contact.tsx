@@ -1,4 +1,4 @@
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export const Contact = () => {
   return (
@@ -52,7 +52,8 @@ export const Contact = () => {
           justifyContent: 'flex-end'
         }}>
           <a 
-            href="mailto:shaunak.ondare@example.com" 
+            href="mailto:shaunakondare999@gmail.com" 
+            className="contact-btn"
             style={{
               display: 'inline-flex',
               alignItems: 'center',
@@ -72,7 +73,10 @@ export const Contact = () => {
             onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.05)'}
             onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
           >
-            contact me <ArrowUpRight size={16} />
+            contact me 
+            <div className="contact-arrow" style={{ transition: 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)', display: 'flex' }}>
+              <ArrowRight size={16} />
+            </div>
           </a>
         </div>
 

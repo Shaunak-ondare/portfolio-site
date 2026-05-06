@@ -58,6 +58,7 @@ export const Projects = () => {
         {projects.map((project, index) => (
           <div 
             key={project.title}
+            className={`project-card animate-fade-in delay-${(index % 3) + 1}`}
             style={{ 
               backgroundColor: project.color,
               color: project.textColor || '#ffffff',
@@ -70,7 +71,7 @@ export const Projects = () => {
               position: 'sticky',
               top: `calc(5rem + ${index * 1.5}rem)`,
               overflow: 'hidden',
-              boxShadow: '0 -10px 30px rgba(0,0,0,0.5)',
+              boxShadow: `0 -10px 30px -10px rgba(0,0,0,0.4), 0 -40px 120px -20px ${project.color}50`,
               borderRadius: '24px'
             }}
           >
@@ -101,13 +102,16 @@ export const Projects = () => {
                 {project.title}
               </h3>
               
-              <a href={project.link} target="_blank" rel="noreferrer" style={{ 
+              <a href={project.link} target="_blank" rel="noreferrer" className="project-arrow-link" style={{ 
                 color: 'inherit',
                 opacity: 0.8,
                 transition: 'opacity 0.2s',
-                marginTop: '1rem'
+                marginTop: '1rem',
+                display: 'inline-block'
               }}>
-                <ArrowRight size={56} strokeWidth={2.5} />
+                <div className="project-arrow" style={{ transition: 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)' }}>
+                  <ArrowRight size={56} strokeWidth={2.5} />
+                </div>
               </a>
             </div>
 

@@ -1557,3 +1557,8 @@ html.dark .folder-card:hover .folder-card__hint { color: rgba(255, 255, 255, 0.7
   text-align: center;
   transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease;
 }
+
+/* Project Card Hover Animations */
+.project-card:hover .project-arrow, .contact-btn:hover .contact-arrow {
+  transform: rotate(-45deg);
+}

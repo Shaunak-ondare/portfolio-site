@@ -1,4 +1,4 @@
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
 const projects = [
@@ -7,7 +7,8 @@ const projects = [
     type: 'Cloud Architecture',
     title: 'iam engine',
     description: 'Serverless Lambda function written in Python that assumes IAM roles across multiple AWS accounts to systematically delete inactive user access keys, login profiles, and users safely.',
-    color: '#ff6600', // vibrant orange
+    color: '#FF5C00', // vibrant orange
+    textColor: '#000000', // pure black text
     link: '#',
   },
   {
@@ -106,7 +107,7 @@ export const Projects = () => {
                 transition: 'opacity 0.2s',
                 marginTop: '1rem'
               }}>
-                <ArrowUpRight size={48} strokeWidth={1.5} />
+                <ArrowRight size={56} strokeWidth={2.5} />
               </a>
             </div>
 

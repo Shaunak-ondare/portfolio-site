@@ -1,4 +1,28 @@
+import { useState, useEffect } from 'react';
+
+const roles = [
+  "building resilient\ninfrastructure",
+  "building devsecops\npipelines",
+  "deploying apps\nin a secure way",
+  "automating cloud\nworkloads"
+];
+
 export const Hero = () => {
+  const [roleIndex, setRoleIndex] = useState(0);
+  const [isFading, setIsFading] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsFading(true);
+      setTimeout(() => {
+        setRoleIndex((prev) => (prev + 1) % roles.length);
+        setIsFading(false);
+      }, 500);
+    }, 7000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section id="hero" className="hero-section">
       <div className="container" style={{ minHeight: '100vh', paddingTop: '10rem', position: 'relative' }}>
@@ -33,11 +57,20 @@ export const Hero = () => {
             letterSpacing: '-0.04em',
             lineHeight: 0.95,
             color: 'var(--color-text)',
-            maxWidth: '100%'
+            maxWidth: '100%',
+            display: 'flex',
+            flexDirection: 'column'
           }}>
-            a devops engineer<br />
-            building resilient<br />
-            infrastructure
+            <span>a devops engineer</span>
+            <span style={{ 
+              opacity: isFading ? 0 : 1, 
+              transform: isFading ? 'translateY(10px)' : 'translateY(0)',
+              filter: isFading ? 'blur(4px)' : 'blur(0)',
+              transition: 'opacity 0.5s ease, transform 0.5s ease, filter 0.5s ease',
+              whiteSpace: 'pre-line' 
+            }}>
+              {roles[roleIndex]}
+            </span>
           </h1>
         </div>
 

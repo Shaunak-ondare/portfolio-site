@@ -1,133 +1,81 @@
-import { Github, Linkedin, Twitter, Instagram, Download, Mail } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 
 export const Contact = () => {
   return (
-    <section id="contact" style={{ padding: 'var(--section-padding)' }}>
-      <div className="container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <h2 className="section-title">Get In Touch</h2>
-        <div style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: '3rem',
-          width: '100%',
-          maxWidth: '800px'
+    <section id="contact" style={{ paddingTop: '8rem', paddingBottom: '12rem', position: 'relative' }}>
+      <div className="container" style={{ position: 'relative' }}>
+        
+        {/* Top Border Line for the section */}
+        <div style={{ 
+          gridColumn: '1 / 9', 
+          height: '1px', 
+          backgroundColor: 'var(--color-border)',
+          marginBottom: '4rem'
+        }}></div>
+
+        {/* Top Metadata Row */}
+        <div style={{ 
+          gridColumn: '1 / 9', 
+          padding: '0 2rem',
+          fontFamily: 'var(--font-mono)',
+          fontSize: '0.85rem',
+          opacity: 0.7,
+          marginBottom: '8rem'
         }}>
-          <p style={{
-            color: 'var(--color-text-muted)',
-            textAlign: 'center',
-            fontSize: '1.1rem',
-            lineHeight: 1.6
+          <div>.say hello</div>
+        </div>
+
+        {/* Giant Typography */}
+        <div style={{ 
+          gridColumn: '1 / 9', 
+          padding: '0 2rem',
+          marginBottom: '6rem'
+        }}>
+          <h2 style={{
+            fontSize: 'clamp(3rem, 7vw, 6.5rem)',
+            fontWeight: 500,
+            letterSpacing: '-0.04em',
+            lineHeight: 1.1,
+            color: 'var(--color-text)',
+            maxWidth: '100%',
+            margin: 0
           }}>
-            I am currently looking for new opportunities. Whether you have a question or just want to say hi, my inbox is always open. I'll definitely try my best to get back to you!
-          </p>
-          
-          <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-            <a href="/Shaunak_Resume.pdf" target="_blank" rel="noopener noreferrer"
-            className="contact-btn-secondary"
+            i'm open for freelance projects, feel free to email me to see how can we collaborate
+          </h2>
+        </div>
+
+        {/* Contact Button */}
+        <div style={{ 
+          gridColumn: '6 / 9',
+          paddingRight: '2rem',
+          display: 'flex',
+          justifyContent: 'flex-end'
+        }}>
+          <a 
+            href="mailto:shaunak.ondare@example.com" 
             style={{
               display: 'inline-flex',
               alignItems: 'center',
-              gap: '0.75rem',
-              padding: '1rem 2rem',
-              borderRadius: '12px',
-              backgroundColor: 'rgba(255, 255, 255, 0.5)',
-              border: '1px solid rgba(19, 32, 55, 0.15)',
-              backdropFilter: 'blur(12px)',
-              WebkitBackdropFilter: 'blur(12px)',
-              color: 'var(--color-hero-ink)',
-              fontWeight: 500,
-              transition: 'all 0.3s ease',
-              boxShadow: '0 4px 30px rgba(19, 32, 55, 0.06)'
+              justifyContent: 'center',
+              gap: '0.5rem',
+              padding: '1.25rem 2rem',
+              border: '1px solid var(--color-border)',
+              backgroundColor: 'transparent',
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.9rem',
+              color: 'var(--color-text)',
+              textDecoration: 'none',
+              transition: 'background-color 0.2s',
+              width: '100%',
+              maxWidth: '300px'
             }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.75)';
-              e.currentTarget.style.borderColor = 'rgba(15, 140, 255, 0.3)';
-              e.currentTarget.style.transform = 'translateY(-2px)';
-              e.currentTarget.style.boxShadow = '0 8px 32px rgba(15, 140, 255, 0.1)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
-              e.currentTarget.style.borderColor = 'rgba(19, 32, 55, 0.15)';
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 4px 30px rgba(19, 32, 55, 0.06)';
-            }}>
-              <Download size={20} />
-              View / Download Resume
-            </a>
-            
-            <a href="mailto:shaunakondare999@gmail.com" style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.75rem',
-              padding: '1rem 2rem',
-              borderRadius: '12px',
-              background: 'linear-gradient(180deg, #0f8cff 0%, #0078df 100%)',
-              color: '#ffffff',
-              fontWeight: 600,
-              transition: 'all 0.3s ease',
-              boxShadow: '0 4px 20px rgba(15, 140, 255, 0.3)'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'translateY(-2px)';
-              e.currentTarget.style.boxShadow = '0 8px 32px rgba(15, 140, 255, 0.5)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 4px 20px rgba(15, 140, 255, 0.3)';
-            }}>
-              <Mail size={20} />
-              Contact Me
-            </a>
-          </div>
-
-          <div style={{
-            display: 'flex',
-            gap: '1.5rem',
-            marginTop: '1rem'
-          }}>
-            {[
-              { icon: <Twitter size={22} />, href: "https://x.com/vibeinloop", label: "X" },
-              { icon: <Instagram size={22} />, href: "https://www.instagram.com/shaunak.ondare/", label: "Instagram" },
-              { icon: <Linkedin size={22} />, href: "https://www.linkedin.com/in/shaunak-ondare20/", label: "LinkedIn" },
-              { icon: <Github size={22} />, href: "https://github.com/Shaunak-ondare", label: "GitHub" }
-            ].map((social, index) => (
-              <a key={index} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.label}
-              className="contact-social-btn"
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                width: '56px',
-                height: '56px',
-                borderRadius: '50%',
-                backgroundColor: 'rgba(255, 255, 255, 0.45)',
-                border: '1px solid rgba(19, 32, 55, 0.12)',
-                backdropFilter: 'blur(12px)',
-                WebkitBackdropFilter: 'blur(12px)',
-                color: 'var(--color-hero-muted)',
-                transition: 'all 0.3s ease',
-                boxShadow: '0 4px 20px rgba(19, 32, 55, 0.06)'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.color = 'var(--color-hero-dot-accent)';
-                e.currentTarget.style.borderColor = 'rgba(15, 140, 255, 0.35)';
-                e.currentTarget.style.backgroundColor = 'rgba(15, 140, 255, 0.08)';
-                e.currentTarget.style.transform = 'translateY(-4px)';
-                e.currentTarget.style.boxShadow = '0 10px 25px rgba(15, 140, 255, 0.15)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.color = 'var(--color-hero-muted)';
-                e.currentTarget.style.borderColor = 'rgba(19, 32, 55, 0.12)';
-                e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.45)';
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 20px rgba(19, 32, 55, 0.06)';
-              }}>
-                {social.icon}
-              </a>
-            ))}
-          </div>
+            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.05)'}
+            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+          >
+            contact me <ArrowUpRight size={16} />
+          </a>
         </div>
+
       </div>
     </section>
   );

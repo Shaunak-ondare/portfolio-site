@@ -1,26 +1,80 @@
+import type { CSSProperties, ReactNode } from 'react';
 import { ExternalLink, Github } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
 const projects = [
   {
+    eyebrow: 'Featured Build',
     title: 'Automated IAM Deletion Engine',
-    description: 'Serverless Lambda function written in Python that assumes IAM roles across multiple AWS accounts to systematically delete inactive user access keys, login profiles, and users safely.',
+    description:
+      'Serverless Lambda function written in Python that assumes IAM roles across multiple AWS accounts to systematically delete inactive user access keys, login profiles, and users safely.',
     tags: ['AWS Lambda', 'Python', 'IAM', 'Boto3'],
-    links: { github: '#', live: '#' }
+    links: { github: '#', live: '#' },
+    accent: {
+      from: '#1ea7fd',
+      mid: '#4f7cff',
+      to: '#7b4dff',
+      glow: 'rgba(70, 117, 255, 0.26)',
+    },
   },
   {
+    eyebrow: 'Workflow Hardening',
     title: 'CI/CD Pipeline Security Integration',
-    description: 'Developed and debugged GitHub Actions workflows integrating OWASP Dependency Check. Resolved Java Runtime incompatibilities for maven plugins to enforce strict security gates before deployment.',
+    description:
+      'Developed and debugged GitHub Actions workflows integrating OWASP Dependency Check. Resolved Java Runtime incompatibilities for maven plugins to enforce strict security gates before deployment.',
     tags: ['CI/CD', 'GitHub Actions', 'Maven', 'OWASP'],
-    links: { github: 'https://github.com/Shaunak-ondare/devsecops-pipeline' }
+    links: { github: 'https://github.com/Shaunak-ondare/devsecops-pipeline' },
+    accent: {
+      from: '#00b5a6',
+      mid: '#1ea7fd',
+      to: '#4f7cff',
+      glow: 'rgba(35, 143, 212, 0.22)',
+    },
   },
   {
+    eyebrow: 'Platform Ops',
     title: 'Multi-Environment Infrastructure Automation',
-    description: 'Designed declarative infrastructure as code modules to provision consistent environments across dev, staging, and production using custom modules.',
+    description:
+      'Designed declarative infrastructure as code modules to provision consistent environments across dev, staging, and production using custom modules.',
     tags: ['Terraform', 'AWS', 'Docker', 'Bash'],
-    links: { live: '#' }
-  }
+    links: { live: '#' },
+    accent: {
+      from: '#ff9a3d',
+      mid: '#ff6f91',
+      to: '#ff5f6d',
+      glow: 'rgba(255, 132, 93, 0.22)',
+    },
+  },
 ];
+
+const renderAction = (
+  href: string | undefined,
+  label: string,
+  icon: ReactNode,
+  ariaLabel: string
+) => {
+  if (!href || href === '#') {
+    return (
+      <span className="project-card__link project-card__link--disabled" aria-disabled="true">
+        {icon}
+        {label}
+      </span>
+    );
+  }
+
+  return (
+    <a
+      href={href}
+      aria-label={ariaLabel}
+      className="project-card__link"
+      target="_blank"
+      rel="noreferrer"
+    >
+      {icon}
+      {label}
+    </a>
+  );
+};
 
 export const Projects = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -36,96 +90,69 @@ export const Projects = () => {
       },
       { threshold: 0.1 }
     );
-    
+
     if (sectionRef.current) {
       observer.observe(sectionRef.current);
     }
-    
+
     return () => observer.disconnect();
   }, []);
 
   return (
-    <section id="projects" ref={sectionRef} style={{ padding: 'var(--section-padding)', position: 'relative', zIndex: 1 }}>
+    <section
+      id="projects"
+      ref={sectionRef}
+      style={{ padding: 'var(--section-padding)', position: 'relative', zIndex: 1 }}
+    >
       <div className="container">
-        <h2 className={`section-title ${isVisible ? 'animate-fade-in' : ''}`} style={{ opacity: isVisible ? '' : 0 }}>Systems I’ve Built</h2>
+        <h2
+          className={`section-title ${isVisible ? 'animate-fade-in' : ''}`}
+          style={{ opacity: isVisible ? '' : 0 }}
+        >
+          Systems I&apos;ve Built
+        </h2>
 
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
-          gap: '2rem',
-          marginTop: '3rem'
-        }}>
-          {projects.map((project, index) => (
-            <div key={index} 
-              className={isVisible ? `animate-fade-in delay-${(index % 3) + 1}` : ''}
-              style={{
+        <div className="projects-grid">
+          {projects.map((project, index) => {
+            const cardStyle = {
               opacity: isVisible ? undefined : 0,
-              backgroundColor: 'rgba(255, 255, 255, 0.6)',
-              backdropFilter: 'blur(12px) saturate(180%)',
-              WebkitBackdropFilter: 'blur(12px) saturate(180%)',
-              border: '1px solid rgba(19, 32, 55, 0.12)',
-              padding: '2.5rem 2rem',
-              borderRadius: '2px',
-              transition: 'transform 0.3s ease, border-color 0.3s ease',
-              display: 'flex',
-              flexDirection: 'column',
-              height: '100%'
-            }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-5px)';
-                e.currentTarget.style.borderColor = 'rgba(15, 140, 255, 0.5)';
-                e.currentTarget.style.boxShadow = '0 10px 30px rgba(15, 140, 255, 0.08)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.borderColor = 'rgba(19, 32, 55, 0.12)';
-                e.currentTarget.style.boxShadow = 'none';
-              }}
-            >
-              <h3 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '1rem', letterSpacing: '-0.02em', color: 'var(--color-hero-ink)' }}>
-                {project.title}
-              </h3>
+              '--project-accent-from': project.accent.from,
+              '--project-accent-mid': project.accent.mid,
+              '--project-accent-to': project.accent.to,
+              '--project-accent-glow': project.accent.glow,
+            } as CSSProperties;
 
-              <p style={{ color: 'var(--color-hero-muted)', marginBottom: '2rem', flexGrow: 1, lineHeight: 1.7 }}>
-                {project.description}
-              </p>
+            return (
+              <article
+                key={project.title}
+                className={`project-card ${isVisible ? `animate-fade-in delay-${(index % 3) + 1}` : ''}`}
+                style={cardStyle}
+              >
+                <div className="project-card__banner">
+                  <div className="project-card__atmosphere" aria-hidden="true" />
+                  <span className="project-card__eyebrow">{project.eyebrow}</span>
+                  <h3 className="project-card__title">{project.title}</h3>
+                </div>
 
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '2rem' }}>
-                {project.tags.map(tag => (
-                  <span key={tag} style={{
-                    fontSize: '0.75rem',
-                    padding: '0.25rem 0.75rem',
-                    backgroundColor: 'rgba(15, 140, 255, 0.08)',
-                    border: '1px solid rgba(15, 140, 255, 0.25)',
-                    borderRadius: '100px',
-                    color: 'var(--color-hero-dot-accent)',
-                    letterSpacing: '0.05em'
-                  }}>
-                    {tag}
-                  </span>
-                ))}
-              </div>
+                <div className="project-card__content">
+                  <p className="project-card__description">{project.description}</p>
 
-              <div style={{ display: 'flex', gap: '1.5rem', borderTop: '1px solid rgba(19, 32, 55, 0.15)', paddingTop: '1.5rem' }}>
-                {project.links.github && (
-                  <a href={project.links.github} aria-label="GitHub" style={{ color: 'var(--color-hero-ink)', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.9rem', opacity: 0.7, transition: 'opacity 0.2s' }}
-                    onMouseEnter={e => e.currentTarget.style.opacity = '1'}
-                    onMouseLeave={e => e.currentTarget.style.opacity = '0.7'}
-                  >
-                    <Github size={18} /> Code
-                  </a>
-                )}
-                {project.links.live && (
-                  <a href={project.links.live} aria-label="Live Demo" style={{ color: 'var(--color-hero-ink)', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.9rem', opacity: 0.7, transition: 'opacity 0.2s' }}
-                    onMouseEnter={e => e.currentTarget.style.opacity = '1'}
-                    onMouseLeave={e => e.currentTarget.style.opacity = '0.7'}
-                  >
-                    <ExternalLink size={18} /> Visit
-                  </a>
-                )}
-              </div>
-            </div>
-          ))}
+                  <div className="project-card__tags">
+                    {project.tags.map((tag) => (
+                      <span key={tag} className="project-card__tag">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="project-card__actions">
+                    {renderAction(project.links.github, 'Code', <Github size={18} />, 'GitHub')}
+                    {renderAction(project.links.live, 'Visit', <ExternalLink size={18} />, 'Live Demo')}
+                  </div>
+                </div>
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>

@@ -23,7 +23,9 @@ export const Contact = () => {
           </p>
           
           <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-            <a href="/Shaunak_Resume.pdf" target="_blank" rel="noopener noreferrer" style={{
+            <a href="/Shaunak_Resume.pdf" target="_blank" rel="noopener noreferrer"
+            className="contact-btn-secondary"
+            style={{
               display: 'inline-flex',
               alignItems: 'center',
               gap: '0.75rem',
@@ -90,7 +92,9 @@ export const Contact = () => {
               { icon: <Linkedin size={22} />, href: "https://www.linkedin.com/in/shaunak-ondare20/", label: "LinkedIn" },
               { icon: <Github size={22} />, href: "https://github.com/Shaunak-ondare", label: "GitHub" }
             ].map((social, index) => (
-              <a key={index} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.label} style={{
+              <a key={index} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.label}
+              className="contact-social-btn"
+              style={{
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',

@@ -16,7 +16,15 @@ export const ParticleBackground = () => {
     if (!init) return null;
 
     return (
-        <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0 }}>
+        <div style={{ 
+            position: 'fixed', 
+            top: 0, 
+            left: 0, 
+            width: '100%', 
+            height: '100%', 
+            zIndex: -1, 
+            pointerEvents: 'none' 
+        }}>
         <Particles
             id="tsparticles"
             options={{
@@ -28,78 +36,51 @@ export const ParticleBackground = () => {
                 fpsLimit: 120,
                 interactivity: {
                     events: {
-                        onClick: {
-                            enable: true,
-                            mode: "push",
-                        },
                         onHover: {
                             enable: true,
                             mode: "bubble",
-                            parallax: {
-                                enable: true,
-                                force: 150,
-                                smooth: 30,
-                            },
                         },
                     },
                     modes: {
-                        push: {
-                            quantity: 4,
-                        },
                         bubble: {
-                            distance: 250,
-                            size: 6,
+                            distance: 200,
+                            size: 10,
                             duration: 2,
-                            opacity: 1,
+                            opacity: 0.8,
                         },
                     },
                 },
                 particles: {
                     color: {
-                        value: "#00f0ff",
-                    },
-                    shadow: {
-                        blur: 20,
-                        color: {
-                            value: "#00f0ff",
-                        },
-                        enable: true,
-                        offset: {
-                            x: 0,
-                            y: 0,
-                        },
+                        value: "#0f8cff",
                     },
                     links: {
                         enable: false,
                     },
                     move: {
-                        enable: true,
-                        speed: { min: 0.2, max: 1.5 },
                         direction: "none",
-                        random: true,
+                        enable: true,
+                        outModes: {
+                            default: "bounce",
+                        },
+                        random: false,
+                        speed: 1,
                         straight: false,
-                        outModes: "out",
                     },
                     number: {
                         density: {
                             enable: true,
-                            width: 800,
                         },
-                        value: 80,
+                        value: 90,
                     },
                     opacity: {
-                        value: { min: 0.1, max: 1 },
-                        animation: {
-                            enable: true,
-                            speed: 1,
-                            sync: false,
-                        }
+                        value: 0.6,
                     },
                     shape: {
                         type: "circle",
                     },
                     size: {
-                        value: { min: 0.5, max: 2.5 },
+                        value: { min: 1, max: 4 },
                     },
                 },
                 detectRetina: true,

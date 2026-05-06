@@ -1,5 +1,5 @@
 import { Download } from 'lucide-react';
-import { useMemo, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 export const Hero = () => {
   const [greetingIndex, setGreetingIndex] = useState(0);
@@ -15,33 +15,11 @@ export const Hero = () => {
     return () => clearInterval(timer);
   }, [greetings.length]);
 
-  const mapClusters = [
-    { className: 'hero-map__cluster hero-map__cluster--north', dots: 54 },
-    { className: 'hero-map__cluster hero-map__cluster--west', dots: 42 },
-    { className: 'hero-map__cluster hero-map__cluster--center', dots: 158 },
-    { className: 'hero-map__cluster hero-map__cluster--south', dots: 46 },
-    { className: 'hero-map__cluster hero-map__cluster--east', dots: 52 },
-  ];
-
-  // Generate stable random indices for blinking dots
-  const blinkingDots = useMemo(() => {
-    return mapClusters.map(cluster => {
-      const indices = new Set<number>();
-      const count = Math.floor(cluster.dots * 0.25); // 25% of dots will blink
-      while(indices.size < count) {
-        indices.add(Math.floor(Math.random() * cluster.dots));
-      }
-      return Array.from(indices);
-    });
-  }, []);
-
   return (
     <section id="hero" className="hero-section">
       <div className="hero-shell">
         <div className="container hero-layout">
           <div className="hero-copy">
-            <p className="hero-eyebrow animate-fade-in">DevOps & Cloud Infrastructure Engineer</p>
-
             <h1 className="hero-title delay-1 animate-fade-in">
               <span 
                 key={greetingIndex}
@@ -71,34 +49,6 @@ export const Hero = () => {
                 <Download size={18} />
                 View Resume
               </a>
-            </div>
-          </div>
-
-          <div className="hero-visual" aria-hidden="true">
-            <div className="hero-map">
-              <div className="hero-map__halo hero-map__halo--one" />
-              <div className="hero-map__halo hero-map__halo--two" />
-
-              {mapClusters.map((cluster, clusterIndex) => (
-                <div key={cluster.className} className={cluster.className}>
-                  {Array.from({ length: cluster.dots }).map((_, index) => {
-                    const isBlinking = blinkingDots[clusterIndex].includes(index);
-                    const blinkDuration = isBlinking ? `${(1.8 + Math.random() * 3).toFixed(2)}s` : undefined;
-                    const blinkDelay = isBlinking ? `${(Math.random() * 4).toFixed(2)}s` : undefined;
-                    
-                    return (
-                      <span
-                        key={`${cluster.className}-${index}`}
-                        className={`hero-map__dot ${isBlinking ? 'hero-map__dot--accent' : ''}`}
-                        style={isBlinking ? {
-                          '--blink-duration': blinkDuration,
-                          '--blink-delay': blinkDelay,
-                        } as React.CSSProperties : undefined}
-                      />
-                    );
-                  })}
-                </div>
-              ))}
             </div>
           </div>
         </div>

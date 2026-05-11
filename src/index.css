@@ -1562,3 +1562,9 @@ html.dark .folder-card:hover .folder-card__hint { color: rgba(255, 255, 255, 0.7
 .project-card:hover .project-arrow, .contact-btn:hover .contact-arrow {
   transform: rotate(-45deg);
 }
+
+.project-card:hover .project-image {
+  transform: scale(1.02);
+  opacity: 1 !important;
+  filter: grayscale(0%);
+}

@@ -9,7 +9,8 @@ const projects = [
     description: 'Serverless Lambda function written in Python that assumes IAM roles across multiple AWS accounts to systematically delete inactive user access keys, login profiles, and users safely.',
     color: '#FF5C00', // vibrant orange
     textColor: '#000000', // pure black text
-    link: '#',
+    link: 'https://github.com/Shaunak-ondare/git-cicd-otp-auth-repo',
+    image: '/iam_engine.png'
   },
   {
     year: '2023',
@@ -19,6 +20,7 @@ const projects = [
     color: '#fde047', // vibrant yellow
     textColor: '#000000', // black text for yellow bg
     link: 'https://github.com/Shaunak-ondare/devsecops-pipeline',
+    image: '/pipeline_sec.png'
   },
   {
     year: '2022',
@@ -26,7 +28,8 @@ const projects = [
     title: 'infra auto',
     description: 'Designed declarative infrastructure as code modules to provision consistent environments across dev, staging, and production using custom modules.',
     color: '#333333', // dark grey
-    link: '#',
+    link: 'https://github.com/Shaunak-ondare/terraform-eks-repo',
+    image: '/infra_auto.png'
   },
 ];
 
@@ -62,17 +65,18 @@ export const Projects = () => {
             style={{ 
               backgroundColor: project.color,
               color: project.textColor || '#ffffff',
-              padding: '2rem 2rem 6rem',
-              marginBottom: '1rem',
+              padding: '4rem 2rem 6rem',
+              marginBottom: '2rem',
               opacity: isVisible ? 1 : 0,
-              transition: `opacity 0.8s ease ${index * 0.1}s`,
+              transition: `all 0.8s cubic-bezier(0.16, 1, 0.3, 1)`,
               display: 'flex',
               flexDirection: 'column',
               position: 'sticky',
-              top: `calc(5rem + ${index * 1.5}rem)`,
+              top: `calc(10rem + ${index * 2.5}rem)`,
+              zIndex: index + 1,
               overflow: 'hidden',
-              boxShadow: `0 -10px 30px -10px rgba(0,0,0,0.4), 0 -40px 120px -20px ${project.color}50`,
-              borderRadius: '24px'
+              boxShadow: `0 30px 60px -12px rgba(0,0,0,0.3), 0 0 0 1px rgba(0,0,0,0.05)`,
+              borderRadius: '48px'
             }}
           >
             {/* Top Bar Metadata */}
@@ -102,13 +106,22 @@ export const Projects = () => {
                 {project.title}
               </h3>
               
-              <a href={project.link} target="_blank" rel="noreferrer" className="project-arrow-link" style={{ 
-                color: 'inherit',
-                opacity: 0.8,
-                transition: 'opacity 0.2s',
-                marginTop: '1rem',
-                display: 'inline-block'
-              }}>
+              <a 
+                href={project.link} 
+                target="_blank" 
+                rel="noreferrer" 
+                className="project-arrow-link" 
+                style={{ 
+                  color: 'inherit',
+                  opacity: 0.8,
+                  transition: 'opacity 0.2s',
+                  marginTop: '1rem',
+                  display: 'inline-block',
+                  position: 'relative',
+                  zIndex: 20,
+                  cursor: 'pointer'
+                }}
+              >
                 <div className="project-arrow" style={{ transition: 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)' }}>
                   <ArrowRight size={56} strokeWidth={2.5} />
                 </div>
@@ -132,11 +145,27 @@ export const Projects = () => {
               marginTop: '4rem',
               width: '100%',
               height: '400px',
-              backgroundColor: 'rgba(0,0,0,0.1)',
-              borderRadius: '1rem 1rem 0 0',
+              backgroundColor: '#000000',
+              borderRadius: '1rem',
               border: `1px solid ${project.textColor ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.1)'}`,
-              borderBottom: 'none'
-            }}></div>
+              borderBottom: 'none',
+              overflow: 'hidden',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+              {project.image ? (
+                <img 
+                  src={project.image} 
+                  alt={project.title} 
+                  style={{ 
+                    width: '100%', 
+                    height: '100%', 
+                    objectFit: 'contain'
+                  }} 
+                />
+              ) : null}
+            </div>
           </div>
         ))}
       </div>

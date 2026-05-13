@@ -26,7 +26,7 @@ export const Footer = () => {
         <div className="footer-social">
           <a href="https://github.com/Shaunak-ondare" target="_blank" rel="noopener noreferrer" className="nav-link" aria-label="GitHub"><Github size={18} /></a>
           <a href="https://x.com/vibeinloop" target="_blank" rel="noopener noreferrer" className="nav-link" aria-label="Twitter"><Twitter size={18} /></a>
-          <a href="https://instagram.com/shaunakondare" target="_blank" rel="noopener noreferrer" className="nav-link" aria-label="Instagram"><Instagram size={18} /></a>
+          <a href="https://www.instagram.com/shaunak.ondare/" target="_blank" rel="noopener noreferrer" className="nav-link" aria-label="Instagram"><Instagram size={18} /></a>
           <a href="https://www.linkedin.com/in/shaunak-ondare20/" target="_blank" rel="noopener noreferrer" className="nav-link" aria-label="LinkedIn"><Linkedin size={18} /></a>
         </div>
 

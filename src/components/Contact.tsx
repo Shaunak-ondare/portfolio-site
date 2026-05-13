@@ -5,13 +5,7 @@ export const Contact = () => {
     <section id="contact" style={{ paddingTop: '8rem', paddingBottom: '12rem', position: 'relative' }}>
       <div className="container" style={{ position: 'relative' }}>
         
-        {/* Top Border Line for the section */}
-        <div style={{ 
-          gridColumn: '1 / 9', 
-          height: '1px', 
-          backgroundColor: 'var(--color-border)',
-          marginBottom: '4rem'
-        }}></div>
+
 
         {/* Top Metadata Row */}
         <div style={{ 

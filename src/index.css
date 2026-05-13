@@ -1647,3 +1647,116 @@ html.dark .folder-card:hover .folder-card__hint { color: rgba(255, 255, 255, 0.7
     padding-right: 0;
   }
 }
+
+/* Navbar Responsive Styles */
+.nav-logo {
+  grid-column: 1 / 4;
+  padding-left: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.nav-logo a {
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+
+.nav-links {
+  grid-column: 4 / 9;
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 2rem;
+}
+
+.nav-link.get-resume-btn {
+  color: #10b981;
+}
+
+.nav-mobile-toggle {
+  display: none;
+  grid-column: 7 / 9;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 2rem;
+  z-index: 101;
+  background: transparent;
+  border: none;
+}
+
+.hamburger {
+  width: 24px;
+  height: 20px;
+  position: relative;
+  cursor: pointer;
+}
+
+.hamburger span {
+  display: block;
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background: var(--color-text);
+  border-radius: 2px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: .25s ease-in-out;
+}
+
+.hamburger span:nth-child(1) { top: 0px; }
+.hamburger span:nth-child(2) { top: 9px; }
+.hamburger span:nth-child(3) { top: 18px; }
+
+.hamburger.open span:nth-child(1) {
+  top: 9px;
+  transform: rotate(135deg);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+  left: -20px;
+}
+
+.hamburger.open span:nth-child(3) {
+  top: 9px;
+  transform: rotate(-135deg);
+}
+
+@media (max-width: 1023px) {
+  .nav-links {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-logo {
+    grid-column: 1 / 5;
+  }
+  .nav-mobile-toggle {
+    display: flex;
+  }
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 250px;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-left: 1px solid var(--color-border);
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 3rem;
+    transition: right 0.3s ease;
+    z-index: 100;
+  }
+  .nav-links.open {
+    right: 0;
+  }
+}

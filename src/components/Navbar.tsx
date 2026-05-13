@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,32 +24,34 @@ export const Navbar = () => {
       transition: 'all 0.3s ease',
       zIndex: 100,
     }}>
-      <div className="container" style={{ padding: 0 }}>
-        {/* Logo spanning 2 columns */}
-        <div style={{ gridColumn: '1 / 3', paddingLeft: '2rem' }}>
-          <a href="#hero" style={{ 
-            fontSize: '1.25rem', 
-            fontWeight: 500, 
-            letterSpacing: '-0.02em',
-            textDecoration: 'none'
-          }}>
+      <div className="container" style={{ padding: 0, position: 'relative' }}>
+        {/* Logo */}
+        <div className="nav-logo">
+          <a href="#hero">
             .shaunak
           </a>
         </div>
 
-        {/* Links aligned to the right grid columns */}
-        <div style={{ 
-          gridColumn: '5 / 9', 
-          display: 'flex', 
-          gap: '3rem', 
-          alignItems: 'center',
-          paddingLeft: '1rem'
-        }}>
-          <a href="#projects" className="nav-link">projects</a>
-          <a href="#about" className="nav-link">about</a>
-          <a href="#skills" className="nav-link">skills</a>
-          <a href="#contact" className="nav-link">contact</a>
-          <a href="/Shaunak_Resume.pdf" target="_blank" rel="noopener noreferrer" className="nav-link" style={{ color: '#10b981' }}>get resume</a>
+        {/* Hamburger Toggle (Mobile) */}
+        <button 
+          className="nav-mobile-toggle" 
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle menu"
+        >
+          <div className={`hamburger ${menuOpen ? 'open' : ''}`}>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </button>
+
+        {/* Links */}
+        <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
+          <a href="#projects" className="nav-link" onClick={() => setMenuOpen(false)}>projects</a>
+          <a href="#about" className="nav-link" onClick={() => setMenuOpen(false)}>about</a>
+          <a href="#skills" className="nav-link" onClick={() => setMenuOpen(false)}>skills</a>
+          <a href="#contact" className="nav-link" onClick={() => setMenuOpen(false)}>contact</a>
+          <a href="/Shaunak_Resume.pdf" target="_blank" rel="noopener noreferrer" className="nav-link get-resume-btn" onClick={() => setMenuOpen(false)}>get resume</a>
         </div>
       </div>
     </nav>

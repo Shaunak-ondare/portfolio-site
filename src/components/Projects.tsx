@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 
 const projects = [
   {
-    year: '2023',
+    year: '2026',
     type: 'Cloud Architecture',
     title: 'iam engine',
     description: 'Serverless Lambda function written in Python that assumes IAM roles across multiple AWS accounts to systematically delete inactive user access keys, login profiles, and users safely.',
@@ -13,7 +13,7 @@ const projects = [
     image: '/iam_engine.png'
   },
   {
-    year: '2023',
+    year: '2026',
     type: 'DevSecOps',
     title: 'pipeline sec',
     description: 'Developed and debugged GitHub Actions workflows integrating OWASP Dependency Check. Resolved Java Runtime incompatibilities for maven plugins to enforce strict security gates before deployment.',
@@ -23,7 +23,7 @@ const projects = [
     image: '/pipeline_sec.png'
   },
   {
-    year: '2022',
+    year: '2026',
     type: 'Infrastructure',
     title: 'infra auto',
     description: 'Designed declarative infrastructure as code modules to provision consistent environments across dev, staging, and production using custom modules.',

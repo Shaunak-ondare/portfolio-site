@@ -1450,6 +1450,8 @@ html.dark .folder-card:hover .folder-card__hint { color: rgba(255, 255, 255, 0.7
   opacity: 0.6;
 }
 
+
+
 .footer-social {
   grid-column: 7 / 9;
   display: flex;

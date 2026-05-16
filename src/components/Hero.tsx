@@ -49,7 +49,7 @@ export const Hero = () => {
           gridColumn: '1 / 9', 
           padding: '0 2rem'
         }}>
-          <h1 className="hero-title animate-fade-in" style={{
+          <h1 className="hero-title animate-fade-in glitch-hover" style={{
             fontSize: 'clamp(4rem, 10vw, 9rem)',
             fontWeight: 500,
             letterSpacing: '-0.04em',

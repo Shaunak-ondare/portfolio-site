@@ -422,20 +422,11 @@ button {
   flex-direction: column;
   min-height: 100%;
   overflow: hidden;
-  border: 1px solid rgba(19, 32, 55, 0.1);
-  border-radius: 28px;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.68)),
-    rgba(255, 255, 255, 0.78);
-  box-shadow:
-    0 18px 44px rgba(19, 32, 55, 0.08),
-    0 1px 0 rgba(255, 255, 255, 0.85) inset;
-  backdrop-filter: blur(12px) saturate(180%);
-  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  background: #050505;
+  clip-path: polygon(0 20px, 20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
   transition:
     transform 0.3s ease,
-    border-color 0.3s ease,
-    box-shadow 0.3s ease;
+    filter 0.3s ease;
 }
 
 .project-card::before {
@@ -1368,18 +1359,18 @@ html.dark .hero-button--secondary:hover {
 
 /* Project cards — Abyss Dark */
 html.dark .project-card {
-  background: #000000 !important;
-  border-color: rgba(255, 255, 255, 0.1) !important;
-  box-shadow: none !important;
+  background: #050505 !important;
+  border: none !important;
+  filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.2));
 }
 html.dark .project-card:hover {
-  border-color: #00f0ff !important;
-  box-shadow: 0 0 20px rgba(0, 240, 255, 0.2), inset 0 0 10px rgba(0, 240, 255, 0.1) !important;
+  filter: drop-shadow(0 0 12px rgba(0, 240, 255, 0.6));
 }
 html.dark .project-card__tag {
   background: transparent !important;
-  border-color: #ff0055 !important;
+  border: 1px solid #ff0055 !important;
   color: #ff0055 !important;
+  border-radius: 0 !important;
   text-shadow: 0 0 8px rgba(255, 0, 85, 0.4) !important;
 }
 html.dark .project-card__actions {
@@ -1409,16 +1400,17 @@ html.dark .contact-social-btn {
 
 /* Skill folder cards — Abyss Dark */
 html.dark .folder-card {
-  background: #000000 !important;
-  border-color: rgba(255, 255, 255, 0.1) !important;
-  box-shadow: none !important;
+  background: #050505 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  clip-path: polygon(0 20px, 20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+  filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.2));
 }
 html.dark .folder-card:hover {
-  border-color: #ff0055 !important;
-  box-shadow: 0 0 20px rgba(255, 0, 85, 0.2), inset 0 0 10px rgba(255, 0, 85, 0.1) !important;
+  filter: drop-shadow(0 0 12px rgba(255, 0, 85, 0.6));
 }
 html.dark .folder-card__body {
-  background: #000000 !important;
+  background: transparent !important;
   border-top-color: rgba(255, 255, 255, 0.1) !important;
 }
 html.dark .folder-card__title-row { color: #ffffff; }

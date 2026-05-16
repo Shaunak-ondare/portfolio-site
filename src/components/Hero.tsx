@@ -34,15 +34,13 @@ export const Hero = () => {
           justifyContent: 'space-between',
           alignItems: 'flex-start',
           padding: '0 2rem',
-          fontFamily: 'var(--font-mono)',
-          fontSize: '0.85rem',
           opacity: 0.7,
           marginBottom: '8rem'
-        }}>
-          <div>Hey, I'm Shaunak</div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <div style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#10b981' }}></div>
-            available for new projects
+        }} className="mono-text">
+          <div className="tech-marker" style={{ textTransform: 'none' }}>// INITIATE_SESSION: SHAUNAK</div>
+          <div className="tech-marker" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', opacity: 1, textTransform: 'none' }}>
+            <div style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#00f0ff', boxShadow: '0 0 8px #00f0ff' }}></div>
+            [SYS.READY: NEW_PROJECTS]
           </div>
         </div>
 

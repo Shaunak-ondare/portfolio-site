@@ -58,6 +58,12 @@ export const Projects = () => {
   return (
     <section id="projects" ref={sectionRef} style={{ position: 'relative', zIndex: 1, paddingBottom: '8rem' }}>
       <div className="container" style={{ display: 'block' }}>
+        
+        {/* Section Header */}
+        <div className="tech-marker" style={{ marginBottom: '4rem', opacity: 0.7 }}>
+          {'>_ DEPLOYMENTS'}
+        </div>
+
         {projects.map((project, index) => (
           <div 
             key={project.title}
@@ -80,18 +86,17 @@ export const Projects = () => {
             }}
           >
             {/* Top Bar Metadata */}
-            <div style={{ 
+            <div className="mono-text" style={{ 
               display: 'flex', 
               justifyContent: 'space-between',
-              fontFamily: 'var(--font-mono)',
               fontSize: '0.85rem',
               borderBottom: `1px solid ${project.textColor ? 'rgba(0,0,0,0.15)' : 'rgba(255,255,255,0.15)'}`,
               paddingBottom: '1rem',
               marginBottom: '3rem',
               opacity: 0.8
             }}>
-              <span>{project.year}</span>
-              <span>{project.type}</span>
+              <span>[YR:{project.year}]</span>
+              <span>&lt;TYPE:{project.type}&gt;</span>
             </div>
 
             {/* Title & Arrow */}

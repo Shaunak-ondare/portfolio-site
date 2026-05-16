@@ -81,18 +81,50 @@ body {
     rgba(15, 140, 255, 0) 70%,
     transparent 100%
   );
-  animation: gridScanner 15s ease-in-out infinite alternate;
+  animation: gridScanner 11s ease-in-out infinite alternate;
   pointer-events: none;
   z-index: 1;
 }
 
 @keyframes gridScanner {
   0% {
-    transform: translateX(-50%);
+    transform: translateX(-25%);
   }
   100% {
-    transform: translateX(150%);
+    transform: translateX(125%);
   }
+}
+
+/* ── Tech & Typography Utilities ── */
+.crt-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+  background-size: 100% 4px;
+  opacity: 0.15;
+  animation: crtFlicker 0.15s infinite;
+}
+
+@keyframes crtFlicker {
+  0% { opacity: 0.15; }
+  50% { opacity: 0.17; }
+  100% { opacity: 0.15; }
+}
+
+.mono-text {
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+}
+
+.tech-marker {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  opacity: 0.8;
 }
 
 .container {
@@ -294,20 +326,26 @@ button {
 }
 
 .hero-button--primary {
-  background: linear-gradient(180deg, #0f8cff 0%, #0078df 100%);
-  color: #ffffff;
-  box-shadow: 0 14px 28px rgba(15, 140, 255, 0.18);
+  background: transparent;
+  color: #00f0ff;
+  border: 1px solid #00f0ff;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.2), inset 0 0 10px rgba(0, 240, 255, 0.1);
+}
+
+.hero-button--primary:hover {
+  background: rgba(0, 240, 255, 0.1);
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.4), inset 0 0 15px rgba(0, 240, 255, 0.2);
 }
 
 .hero-button--secondary {
   color: var(--color-hero-ink);
   border-color: var(--color-hero-line);
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .hero-button--secondary:hover {
-  background: rgba(255, 255, 255, 0.55);
-  box-shadow: 0 10px 26px rgba(19, 32, 55, 0.08);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
 }
 
 .section-title {
@@ -422,14 +460,7 @@ button {
   opacity: 1;
 }
 
-.project-card:hover .project-card__atmosphere {
-  opacity: 0.94;
-}
 
-.project-card:hover .project-card__atmosphere::before,
-.project-card:hover .project-card__atmosphere::after {
-  animation-play-state: running;
-}
 
 .project-card__banner {
   position: relative;
@@ -459,46 +490,7 @@ button {
   animation: projectBannerGradientShift 14s ease-in-out infinite alternate;
 }
 
-.project-card__atmosphere,
-.project-card__atmosphere::before,
-.project-card__atmosphere::after {
-  position: absolute;
-  inset: -28%;
-  pointer-events: none;
-}
 
-.project-card__atmosphere {
-  z-index: 0;
-  opacity: 0;
-  filter: blur(18px) saturate(125%);
-  transition: opacity 0.3s ease;
-  will-change: opacity;
-}
-
-.project-card__atmosphere::before,
-.project-card__atmosphere::after {
-  content: '';
-  opacity: 1;
-  will-change: transform;
-}
-
-.project-card__atmosphere::before {
-  background:
-    radial-gradient(circle at 18% 50%, rgba(255, 255, 255, 0.62), transparent 20%),
-    radial-gradient(circle at 46% 28%, rgba(120, 247, 255, 0.46), transparent 24%),
-    radial-gradient(circle at 82% 62%, rgba(255, 243, 214, 0.36), transparent 22%);
-  animation: projectCloudDriftA 12s ease-in-out infinite alternate;
-  animation-play-state: paused;
-}
-
-.project-card__atmosphere::after {
-  background:
-    radial-gradient(circle at 28% 72%, rgba(255, 255, 255, 0.28), transparent 18%),
-    radial-gradient(circle at 66% 22%, rgba(255, 150, 244, 0.34), transparent 18%),
-    radial-gradient(circle at 90% 44%, rgba(160, 228, 255, 0.34), transparent 20%);
-  animation: projectCloudDriftB 15s ease-in-out infinite alternate;
-  animation-play-state: paused;
-}
 
 .project-card__banner > *:not(.project-card__atmosphere) {
   position: relative;
@@ -599,41 +591,7 @@ button {
   cursor: default;
 }
 
-@keyframes projectCloudDriftA {
-  0% {
-    transform: translate3d(-12%, 7%, 0) scale(1.02);
-  }
 
-  35% {
-    transform: translate3d(5%, -6%, 0) scale(1.12);
-  }
-
-  70% {
-    transform: translate3d(12%, 4%, 0) scale(1.08);
-  }
-
-  100% {
-    transform: translate3d(-5%, -8%, 0) scale(1.16);
-  }
-}
-
-@keyframes projectCloudDriftB {
-  0% {
-    transform: translate3d(14%, -8%, 0) scale(1.08);
-  }
-
-  40% {
-    transform: translate3d(-8%, 10%, 0) scale(1.14);
-  }
-
-  75% {
-    transform: translate3d(4%, 13%, 0) scale(1.06);
-  }
-
-  100% {
-    transform: translate3d(-12%, -2%, 0) scale(1.18);
-  }
-}
 
 @keyframes projectBannerGradientShift {
   0% {
@@ -1511,20 +1469,21 @@ html.dark .hero-button--secondary:hover {
   background: rgba(255, 255, 255, 0.13);
 }
 
-/* Project cards — white glassmorphism → dark glass */
+/* Project cards — Abyss Dark */
 html.dark .project-card {
-  background: linear-gradient(180deg, rgba(22, 22, 32, 0.95), rgba(12, 12, 20, 0.92)) !important;
-  border-color: rgba(255, 255, 255, 0.07) !important;
-  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.55), 0 1px 0 rgba(255, 255, 255, 0.05) inset !important;
+  background: #000000 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  box-shadow: none !important;
 }
 html.dark .project-card:hover {
-  border-color: rgba(96, 184, 255, 0.28) !important;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7), 0 1px 0 rgba(255, 255, 255, 0.07) inset !important;
+  border-color: #00f0ff !important;
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.2), inset 0 0 10px rgba(0, 240, 255, 0.1) !important;
 }
 html.dark .project-card__tag {
-  background: rgba(96, 184, 255, 0.10) !important;
-  border-color: rgba(96, 184, 255, 0.25) !important;
-  color: #60b8ff !important;
+  background: transparent !important;
+  border-color: #ff0055 !important;
+  color: #ff0055 !important;
+  text-shadow: 0 0 8px rgba(255, 0, 85, 0.4) !important;
 }
 html.dark .project-card__actions {
   border-top-color: rgba(255, 255, 255, 0.08);
@@ -1551,24 +1510,19 @@ html.dark .contact-social-btn {
   color: rgba(200, 210, 230, 0.7) !important;
 }
 
-/* Skill folder cards — restore dark look in dark mode */
+/* Skill folder cards — Abyss Dark */
 html.dark .folder-card {
-  background: rgba(22, 22, 38, 0.90);
-  border-color: rgba(255, 255, 255, 0.07);
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.35),
-    0 1px 0 rgba(255, 255, 255, 0.06) inset;
+  background: #000000 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  box-shadow: none !important;
 }
 html.dark .folder-card:hover {
-  border-color: rgba(255, 255, 255, 0.16);
-  box-shadow:
-    0 24px 60px rgba(0, 0, 0, 0.50),
-    0 0 0 1px rgba(255, 255, 255, 0.06) inset,
-    0 0 80px var(--card-glow, rgba(99,102,241,0.3));
+  border-color: #ff0055 !important;
+  box-shadow: 0 0 20px rgba(255, 0, 85, 0.2), inset 0 0 10px rgba(255, 0, 85, 0.1) !important;
 }
 html.dark .folder-card__body {
-  background: #0e0e1a;
-  border-top-color: rgba(255, 255, 255, 0.06);
+  background: #000000 !important;
+  border-top-color: rgba(255, 255, 255, 0.1) !important;
 }
 html.dark .folder-card__title-row { color: #ffffff; }
 html.dark .folder-card__icon     { color: rgba(255, 255, 255, 0.65); }

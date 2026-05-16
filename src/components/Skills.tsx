@@ -46,17 +46,15 @@ export const Skills = () => {
       <div className="container" style={{ position: 'relative' }}>
         
         {/* Top Metadata Row */}
-        <div style={{ 
+        <div className="tech-marker" style={{ 
           gridColumn: '1 / 9', 
           display: 'flex', 
           alignItems: 'flex-start',
           padding: '0 2rem',
-          fontFamily: 'var(--font-mono)',
-          fontSize: '0.85rem',
           opacity: 0.7,
           marginBottom: '6rem'
         }}>
-          <div>.core competencies</div>
+          <div>// SYS.SKILLS_</div>
         </div>
 
         {/* Content Wrapper */}
@@ -88,14 +86,13 @@ export const Skills = () => {
                 }}>
                   {skill.title}
                 </h3>
-                <div style={{
-                  fontFamily: 'var(--font-mono)',
+                <div className="mono-text" style={{
                   fontSize: '0.9rem',
                   opacity: 0.6,
                   display: 'flex',
                   gap: '1rem'
                 }}>
-                  <span>{skill.date}</span>
+                  <span>[{skill.date}]</span>
                   <span>{skill.description}</span>
                 </div>
               </div>

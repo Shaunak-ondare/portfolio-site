@@ -1,17 +1,20 @@
 import { useState } from 'react';
 import { Moon, Sun, Menu, X } from 'lucide-react';
 
-export const Navbar = () => {
+interface NavbarProps {
+  isDark: boolean;
+  onDarkToggle: (next: boolean) => void;
+}
+
+export const Navbar = ({ isDark, onDarkToggle }: NavbarProps) => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isDark, setIsDark] = useState(
-    () => document.documentElement.classList.contains('dark')
-  );
 
   const toggleDark = () => {
     const next = !isDark;
-    setIsDark(next);
+    onDarkToggle(next);
     document.documentElement.classList.toggle('dark', next);
     localStorage.setItem('retro-dark-mode', String(next));
+    window.dispatchEvent(new CustomEvent('dark-mode-change', { detail: next }));
   };
 
   const handleNav = (href: string) => {
@@ -114,10 +117,10 @@ export const Navbar = () => {
             NAVIGATE
           </div>
           {[
-            { href: '#hero', label: 'Home' },
+            { href: '#hero',     label: 'Home' },
             { href: '#projects', label: 'Projects' },
-            { href: '#skills', label: 'Skills' },
-            { href: '#contact', label: 'Contact' },
+            { href: '#skills',   label: 'Skills' },
+            { href: '#contact',  label: 'Contact' },
           ].map(({ href, label }) => (
             <a
               key={href}

@@ -126,11 +126,6 @@ html, body {
 body {
   font-family: var(--font-head);
   background-color: var(--bg-base);
-  background-image:
-    radial-gradient(var(--bg-dot-color) 20%, transparent 21%),
-    radial-gradient(var(--bg-dot-color) 20%, transparent 21%);
-  background-size: var(--bg-dot-size) var(--bg-dot-size);
-  background-position: 0 0, 3px 3px;
   color: var(--text-primary);
   line-height: 1.5;
   transition: background-color 0.3s ease, color 0.3s ease;

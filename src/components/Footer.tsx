@@ -1,35 +1,65 @@
-
-
 import { Github, Linkedin, Twitter, Instagram } from 'lucide-react';
 
+const socials = [
+  {
+    id: 'footer-github',
+    label: 'GitHub',
+    icon: <Github size={14} />,
+    href: 'https://github.com/Shaunak-ondare',
+  },
+  {
+    id: 'footer-linkedin',
+    label: 'LinkedIn',
+    icon: <Linkedin size={14} />,
+    href: 'https://www.linkedin.com/in/shaunak-ondare20/',
+  },
+  {
+    id: 'footer-twitter',
+    label: 'X / Twitter',
+    icon: <Twitter size={14} />,
+    href: 'https://x.com/vibeinloop',
+  },
+  {
+    id: 'footer-instagram',
+    label: 'Instagram',
+    icon: <Instagram size={14} />,
+    href: 'https://www.instagram.com/shaunak.ondare/',
+  },
+];
+
 export const Footer = () => {
+  const year = new Date().getFullYear();
+
   return (
-    <footer style={{ padding: '2rem 0' }}>
-      <div className="container" style={{ position: 'relative' }}>
-        
-        {/* Logo/Name */}
-        <div className="footer-logo">
-          <span style={{ fontFamily: 'var(--font-main)', fontSize: '1rem', opacity: 0.6 }}>
-            .shaunak
-          </span>
-        </div>
+    <footer className="retro-footer" id="site-footer" role="contentinfo">
+      {/* Status Bar */}
+      <div className="retro-footer__status" id="footer-status">
+        <span className="retro-footer__status-dot" aria-hidden="true" />
+        ▓▒░ SHAUNAK.EXE — READY ░▒▓
+      </div>
 
-        {/* Middle Links */}
-        <div className="footer-links">
-          <a href="#projects" className="nav-link">projects</a>
-          <a href="#about" className="nav-link">about</a>
-          <a href="#skills" className="nav-link">skills</a>
-          <a href="#contact" className="nav-link">contact</a>
-        </div>
+      {/* Social Icons */}
+      <div className="retro-footer__social" id="footer-socials">
+        {socials.map(({ id, label, icon, href }) => (
+          <a
+            key={id}
+            id={id}
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="social-icon-btn"
+            aria-label={label}
+            title={label}
+            style={{ width: 32, height: 32 }}
+          >
+            {icon}
+          </a>
+        ))}
+      </div>
 
-        {/* Social Icons */}
-        <div className="footer-social">
-          <a href="https://github.com/Shaunak-ondare" target="_blank" rel="noopener noreferrer" className="nav-link" aria-label="GitHub"><Github size={18} /></a>
-          <a href="https://x.com/vibeinloop" target="_blank" rel="noopener noreferrer" className="nav-link" aria-label="Twitter"><Twitter size={18} /></a>
-          <a href="https://www.instagram.com/shaunak.ondare/" target="_blank" rel="noopener noreferrer" className="nav-link" aria-label="Instagram"><Instagram size={18} /></a>
-          <a href="https://www.linkedin.com/in/shaunak-ondare20/" target="_blank" rel="noopener noreferrer" className="nav-link" aria-label="LinkedIn"><Linkedin size={18} /></a>
-        </div>
-
+      {/* Copyright */}
+      <div className="retro-footer__copy" id="footer-copy">
+        © {year} · shaunak ondare
       </div>
     </footer>
   );

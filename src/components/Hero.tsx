@@ -1,10 +1,19 @@
 import { useState, useEffect } from 'react';
+import { ArrowRight, Download, Sparkles } from 'lucide-react';
 
 const roles = [
-  "building resilient\ninfrastructure",
-  "building devsecops\npipelines",
-  "deploying apps\nin a secure way",
-  "automating cloud\nworkloads"
+  'BUILDING RESILIENT INFRA',
+  'BUILDING DEVSECOPS PIPELINES',
+  'DEPLOYING APPS SECURELY',
+  'AUTOMATING CLOUD WORKLOADS',
+];
+
+const tags = [
+  '#DevOps',
+  '#CloudArchitecture',
+  '#DevSecOps',
+  '#Terraform',
+  '#OpenToWork',
 ];
 
 export const Hero = () => {
@@ -17,62 +26,100 @@ export const Hero = () => {
       setTimeout(() => {
         setRoleIndex((prev) => (prev + 1) % roles.length);
         setIsFading(false);
-      }, 500);
-    }, 7000);
-
+      }, 400);
+    }, 4000);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <section id="hero" className="hero-section">
-      <div className="container" style={{ minHeight: '100vh', paddingTop: '10rem', position: 'relative' }}>
-        
-        {/* Top Metadata Row */}
-        <div style={{ 
-          gridColumn: '1 / 9', 
-          display: 'flex', 
-          justifyContent: 'space-between',
-          alignItems: 'flex-start',
-          padding: '0 2rem',
-          opacity: 0.7,
-          marginBottom: '8rem'
-        }} className="mono-text">
-          <div className="tech-marker" style={{ textTransform: 'none' }}>// INITIATE_SESSION: SHAUNAK</div>
-          <div className="tech-marker" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', opacity: 1, textTransform: 'none' }}>
-            <div style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#00f0ff', boxShadow: '0 0 8px #00f0ff' }}></div>
-            [SYS.READY: NEW_PROJECTS]
-          </div>
-        </div>
-
-        {/* Huge Headline */}
-        <div style={{ 
-          gridColumn: '1 / 9', 
-          padding: '0 2rem'
-        }}>
-          <h1 className="hero-title animate-fade-in glitch-hover" style={{
-            fontSize: 'clamp(4rem, 10vw, 9rem)',
-            fontWeight: 500,
-            letterSpacing: '-0.04em',
-            lineHeight: 0.95,
-            color: 'var(--color-text)',
-            maxWidth: '100%',
-            display: 'flex',
-            flexDirection: 'column'
-          }}>
-            <span>a devops engineer</span>
-            <span style={{ 
-              opacity: isFading ? 0 : 1, 
-              transform: isFading ? 'translateY(10px)' : 'translateY(0)',
-              filter: isFading ? 'blur(4px)' : 'blur(0)',
-              transition: 'opacity 0.5s ease, transform 0.5s ease, filter 0.5s ease',
-              whiteSpace: 'pre-line' 
-            }}>
-              {roles[roleIndex]}
-            </span>
-          </h1>
-        </div>
-
+    <section id="hero" aria-label="Introduction">
+      {/* ── Notion Breadcrumb ── */}
+      <div className="notion-breadcrumb animate-slide-up" id="hero-breadcrumb">
+        <span className="notion-breadcrumb__item">📄 Workspace</span>
+        <span className="notion-breadcrumb__sep">/</span>
+        <span className="notion-breadcrumb__item">Portfolio</span>
+        <span className="notion-breadcrumb__sep">/</span>
+        <span className="notion-breadcrumb__item" style={{ color: 'var(--text-primary)' }}>
+          Shaunak Ondare
+        </span>
       </div>
+
+      {/* ── Page Icon ── */}
+      <span
+        className="notion-page-icon animate-slide-up delay-1"
+        role="img"
+        aria-label="Developer"
+        id="hero-page-icon"
+      >
+        👨‍💻
+      </span>
+
+      {/* ── H1 Title ── */}
+      <h1
+        className="notion-title animate-slide-up delay-2"
+        id="hero-title"
+      >
+        Shaunak Ondare
+      </h1>
+
+      {/* ── VT323 Role Ticker ── */}
+      <div
+        className="notion-subtitle animate-slide-up delay-2"
+        id="hero-role-ticker"
+        style={{
+          opacity: isFading ? 0 : 1,
+          transform: isFading ? 'translateY(6px)' : 'translateY(0)',
+          transition: 'opacity 0.4s ease, transform 0.4s ease',
+        }}
+      >
+        {'> '}{roles[roleIndex]}
+        <span style={{ animation: 'pixelBlink 0.9s steps(1) infinite' }}>_</span>
+      </div>
+
+      {/* ── Description ── */}
+      <p className="notion-description animate-slide-up delay-3" id="hero-description">
+        A DevOps engineer who builds resilient cloud infrastructure, automates
+        delivery pipelines, and enforces security gates — so teams ship faster
+        without breaking things.
+      </p>
+
+      {/* ── Tag Badges ── */}
+      <div className="notion-tags animate-slide-up delay-3" id="hero-tags">
+        {tags.map((tag) => (
+          <span key={tag} className="notion-tag">{tag}</span>
+        ))}
+      </div>
+
+      {/* ── CTA Buttons ── */}
+      <div className="hero-actions animate-slide-up delay-4" id="hero-cta-buttons">
+        <a
+          id="hero-view-projects-btn"
+          href="#projects"
+          className="brutalist-btn"
+          onClick={(e) => {
+            e.preventDefault();
+            document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' });
+          }}
+        >
+          <Sparkles size={14} className="btn-icon-sparkle" />
+          View Projects
+          <ArrowRight size={14} className="btn-icon-arrow" />
+        </a>
+
+        <a
+          id="hero-resume-btn"
+          href="/Shaunak_Resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="brutalist-btn-outline"
+        >
+          <Download size={14} className="btn-icon-arrow" />
+          Get Resume
+        </a>
+      </div>
+
+      {/* ── Section divider ── */}
+      <hr className="section-divider" style={{ marginTop: '3rem' }} />
     </section>
   );
 };

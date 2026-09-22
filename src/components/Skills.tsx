@@ -2,25 +2,25 @@ import { useEffect, useRef, useState } from 'react';
 
 const skills = [
   {
-    date: '01',
+    num: '01',
     title: 'Cloud & Infrastructure',
-    description: 'AWS, Docker, Kubernetes, Terraform'
+    tools: ['AWS', 'Docker', 'Kubernetes', 'Terraform', 'EKS'],
   },
   {
-    date: '02',
+    num: '02',
     title: 'CI/CD Pipelines',
-    description: 'GitHub Actions, Jenkins, Gitlab CI'
+    tools: ['GitHub Actions', 'Jenkins', 'GitLab CI', 'ArgoCD'],
   },
   {
-    date: '03',
+    num: '03',
     title: 'Programming',
-    description: 'Python, JavaScript, Bash, Go'
+    tools: ['Python', 'JavaScript', 'Bash', 'Go'],
   },
   {
-    date: '04',
+    num: '04',
     title: 'Security & Monitoring',
-    description: 'SonarQube, IAM, Datadog, Prometheus'
-  }
+    tools: ['SonarQube', 'IAM', 'Datadog', 'Prometheus', 'OWASP'],
+  },
 ];
 
 export const Skills = () => {
@@ -42,97 +42,77 @@ export const Skills = () => {
   }, []);
 
   return (
-    <section id="skills" ref={sectionRef} style={{ padding: '8rem 0', position: 'relative' }}>
-      <div className="container" style={{ position: 'relative' }}>
-        
-        {/* Top Metadata Row */}
-        <div className="tech-marker" style={{ 
-          gridColumn: '1 / 9', 
-          display: 'flex', 
-          alignItems: 'flex-start',
-          padding: '0 2rem',
-          opacity: 0.7,
-          marginBottom: '6rem'
-        }}>
-          <div>// SYS.SKILLS_</div>
+    <section id="skills" ref={sectionRef} aria-label="Skills">
+      {/* Section Header */}
+      <div className="section-label animate-slide-up" id="skills-section-label">
+        SKILL MATRIX
+      </div>
+      <h2 className="section-heading animate-slide-up delay-1" id="skills-heading">
+        Tech Stack
+      </h2>
+      <p
+        style={{
+          fontFamily: 'var(--font-mono)',
+          fontSize: '0.78rem',
+          color: 'var(--text-muted)',
+          marginBottom: '2rem',
+          lineHeight: 1.6,
+        }}
+        className="animate-slide-up delay-2"
+      >
+        Tools I reach for · technologies I trust
+      </p>
+
+      {/* Two-column layout */}
+      <div className="skills-layout">
+        {/* Notion-style Table */}
+        <div
+          className="skills-table animate-slide-up delay-2"
+          id="skills-table"
+          style={{ opacity: isVisible ? 1 : 0, transition: 'opacity 0.6s ease' }}
+        >
+          {/* Table Header */}
+          <div className="skills-table__header">
+            <span>#</span>
+            <span>Category</span>
+            <span>Technologies</span>
+          </div>
+
+          {/* Rows */}
+          {skills.map((skill, index) => (
+            <div
+              key={skill.title}
+              id={`skill-row-${skill.num}`}
+              className={`skills-row animate-slide-up delay-${index + 2}`}
+              style={{ opacity: isVisible ? 1 : 0 }}
+            >
+              <span className="skills-row__num">{skill.num}</span>
+              <span className="skills-row__title">{skill.title}</span>
+              <div className="skills-row__tools">
+                {skill.tools.map((tool) => (
+                  <span key={tool} className="skill-tool-pill">{tool}</span>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
 
-        {/* Content Wrapper */}
-        <div style={{
-          gridColumn: '1 / 9',
-          display: 'grid',
-          gridTemplateColumns: 'repeat(8, 1fr)',
-          padding: '0 2rem'
-        }}>
-          
-          {/* Left Column (Skills List) */}
-          <div style={{ gridColumn: '1 / 6', paddingRight: '4rem' }}>
-            {skills.map((skill, index) => (
-              <div 
-                key={skill.title} 
-                className={`animate-fade-in delay-${(index % 3) + 1}`}
-                style={{ 
-                  opacity: isVisible ? 1 : 0,
-                  marginBottom: '5rem'
-                }}
-              >
-                <h3 style={{
-                  fontSize: 'clamp(2rem, 4vw, 3.5rem)',
-                  fontWeight: 500,
-                  letterSpacing: '-0.03em',
-                  lineHeight: 1.1,
-                  marginBottom: '1rem',
-                  color: 'var(--color-text)'
-                }}>
-                  {skill.title}
-                </h3>
-                <div className="mono-text" style={{
-                  fontSize: '0.9rem',
-                  opacity: 0.6,
-                  display: 'flex',
-                  gap: '1rem'
-                }}>
-                  <span>[{skill.date}]</span>
-                  <span>{skill.description}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Right Column (Image Placeholder) */}
-          <div style={{ gridColumn: '6 / 9' }}>
-            <div style={{
-              width: '100%',
-              aspectRatio: '3/4',
-              backgroundColor: 'rgba(255, 255, 255, 0.05)',
-              border: '1px solid var(--color-border)',
-              position: 'sticky',
-              top: '8rem',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: 'rgba(255,255,255,0.3)',
-              fontFamily: 'var(--font-mono)',
-              fontSize: '0.85rem'
-            }}>
-<img 
-                src="/portrait.jpg" 
-                alt="Shaunak Portrait" 
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  filter: 'grayscale(20%) contrast(110%)',
-                  transition: 'filter 0.3s ease'
-                }}
-                onMouseEnter={(e) => e.currentTarget.style.filter = 'grayscale(0%) contrast(100%)'}
-                onMouseLeave={(e) => e.currentTarget.style.filter = 'grayscale(20%) contrast(110%)'}
-              />
-            </div>
-          </div>
-
+        {/* Portrait Polaroid */}
+        <div
+          className="portrait-frame animate-slide-up delay-3"
+          id="portrait-frame"
+          style={{ opacity: isVisible ? 1 : 0, transition: 'opacity 0.6s ease 0.2s' }}
+        >
+          <img
+            src="/portrait.jpg"
+            alt="Shaunak Ondare portrait"
+            id="portrait-img"
+          />
+          <p className="portrait-label">SHAUNAK.ONDARE</p>
         </div>
       </div>
+
+      <hr className="section-divider" style={{ marginTop: '3rem' }} />
     </section>
   );
 };

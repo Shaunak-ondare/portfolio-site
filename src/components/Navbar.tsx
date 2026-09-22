@@ -1,59 +1,160 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { Moon, Sun, Menu, X } from 'lucide-react';
 
 export const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isDark, setIsDark] = useState(
+    () => document.documentElement.classList.contains('dark')
+  );
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const toggleDark = () => {
+    const next = !isDark;
+    setIsDark(next);
+    document.documentElement.classList.toggle('dark', next);
+    localStorage.setItem('retro-dark-mode', String(next));
+  };
+
+  const handleNav = (href: string) => {
+    setMenuOpen(false);
+    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
-    <nav className="site-navbar" style={{
-      position: 'fixed',
-      top: 0,
-      width: '100%',
-      padding: scrolled ? '1.5rem 0' : '2rem 0',
-      backgroundColor: scrolled ? 'rgba(0, 0, 0, 0.85)' : 'transparent',
-      backdropFilter: scrolled ? 'saturate(180%) blur(12px)' : 'none',
-      borderBottom: scrolled ? '1px solid var(--color-border)' : 'none',
-      transition: 'all 0.3s ease',
-      zIndex: 100,
-    }}>
-      <div className="container" style={{ padding: 0, position: 'relative' }}>
-        {/* Logo */}
-        <div className="nav-logo">
-          <a href="#hero">
-            .shaunak
-          </a>
-        </div>
+    <nav
+      className="retro-navbar"
+      role="navigation"
+      aria-label="Main navigation"
+    >
+      {/* Logo */}
+      <a href="#hero" className="retro-navbar__logo" id="nav-logo">
+        <span className="retro-navbar__logo-dot" />
+        .shaunak
+      </a>
 
-        {/* Hamburger Toggle (Mobile) */}
-        <button 
-          className="nav-mobile-toggle" 
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
+      {/* Desktop Links */}
+      <div className="retro-navbar__links" id="nav-desktop-links">
+        {['#projects', '#skills', '#contact'].map((href) => (
+          <a
+            key={href}
+            href={href}
+            className="retro-navbar__link"
+            onClick={(e) => { e.preventDefault(); handleNav(href); }}
+          >
+            {href.replace('#', '')}
+          </a>
+        ))}
+      </div>
+
+      {/* Right Actions */}
+      <div className="retro-navbar__right">
+        {/* Dark Mode Toggle */}
+        <button
+          id="dark-mode-toggle"
+          className="dark-toggle"
+          onClick={toggleDark}
+          aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+          title={isDark ? 'Light mode' : 'Dark mode'}
         >
-          <div className={`hamburger ${menuOpen ? 'open' : ''}`}>
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
+          {isDark ? <Sun size={14} /> : <Moon size={14} />}
         </button>
 
-        {/* Links */}
-        <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
-          <a href="#projects" className="nav-link" onClick={() => setMenuOpen(false)}>projects</a>
-          <a href="#about" className="nav-link" onClick={() => setMenuOpen(false)}>about</a>
-          <a href="#skills" className="nav-link" onClick={() => setMenuOpen(false)}>skills</a>
-          <a href="#contact" className="nav-link" onClick={() => setMenuOpen(false)}>contact</a>
-          <a href="/Shaunak_Resume.pdf" target="_blank" rel="noopener noreferrer" className="nav-link get-resume-btn" onClick={() => setMenuOpen(false)}>get resume</a>
-        </div>
+        {/* Resume CTA */}
+        <a
+          id="nav-resume-btn"
+          href="/Shaunak_Resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="brutalist-btn-success"
+          style={{ padding: '0.5rem 1rem', fontSize: '0.7rem' }}
+        >
+          <span className="btn-icon-arrow">↓</span>
+          Resume
+        </a>
+
+        {/* Mobile Hamburger */}
+        <button
+          className="nav-mobile-toggle"
+          id="mobile-menu-toggle"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle menu"
+          aria-expanded={menuOpen}
+        >
+          {menuOpen ? <X size={16} /> : <Menu size={16} />}
+        </button>
       </div>
+
+      {/* Mobile Drawer */}
+      {menuOpen && (
+        <div
+          id="mobile-nav-drawer"
+          style={{
+            position: 'fixed',
+            top: 0,
+            right: 0,
+            width: 240,
+            height: '100vh',
+            background: 'var(--surface)',
+            border: 'var(--border-width) solid var(--border-color)',
+            boxShadow: '-4px 0px 0px var(--border-color)',
+            zIndex: 200,
+            display: 'flex',
+            flexDirection: 'column',
+            padding: '2rem 1.5rem',
+            gap: '1.5rem',
+          }}
+        >
+          <div style={{
+            fontFamily: 'var(--font-pixel)',
+            fontSize: '1.2rem',
+            color: 'var(--text-faint)',
+            borderBottom: '1.5px solid var(--border-color)',
+            paddingBottom: '0.75rem',
+            marginBottom: '0.5rem',
+          }}>
+            NAVIGATE
+          </div>
+          {[
+            { href: '#hero', label: 'Home' },
+            { href: '#projects', label: 'Projects' },
+            { href: '#skills', label: 'Skills' },
+            { href: '#contact', label: 'Contact' },
+          ].map(({ href, label }) => (
+            <a
+              key={href}
+              href={href}
+              className="retro-navbar__link"
+              style={{ fontSize: '0.85rem' }}
+              onClick={(e) => { e.preventDefault(); handleNav(href); }}
+            >
+              ▶ {label}
+            </a>
+          ))}
+          <a
+            href="/Shaunak_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="brutalist-btn-success"
+            style={{ marginTop: 'auto', justifyContent: 'center' }}
+            onClick={() => setMenuOpen(false)}
+          >
+            ↓ Resume
+          </a>
+        </div>
+      )}
+
+      {/* Backdrop */}
+      {menuOpen && (
+        <div
+          onClick={() => setMenuOpen(false)}
+          style={{
+            position: 'fixed',
+            inset: 0,
+            zIndex: 199,
+            background: 'rgba(0,0,0,0.3)',
+            backdropFilter: 'blur(2px)',
+          }}
+        />
+      )}
     </nav>
   );
 };

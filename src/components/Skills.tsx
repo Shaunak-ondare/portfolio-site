@@ -64,7 +64,7 @@ export const Skills = () => {
       </p>
 
       {/* Two-column layout */}
-      <div className="skills-layout">
+      <div style={{ width: '100%' }}>
         {/* Notion-style Table */}
         <div
           className="skills-table animate-slide-up delay-2"
@@ -95,20 +95,6 @@ export const Skills = () => {
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Portrait Polaroid */}
-        <div
-          className="portrait-frame animate-slide-up delay-3"
-          id="portrait-frame"
-          style={{ opacity: isVisible ? 1 : 0, transition: 'opacity 0.6s ease 0.2s' }}
-        >
-          <img
-            src="/portrait.jpg"
-            alt="Shaunak Ondare portrait"
-            id="portrait-img"
-          />
-          <p className="portrait-label">SHAUNAK.ONDARE</p>
         </div>
       </div>
 

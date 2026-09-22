@@ -77,48 +77,52 @@ export const Projects = () => {
       {/* Cards Grid */}
       <div className="projects-grid" id="projects-grid">
         {projects.map((project, index) => (
+          /* Outer: animation only — display:contents makes it invisible to grid layout */
           <div
             key={project.title}
-            id={`project-card-${project.title.toLowerCase().replace(/\s+/g, '-')}`}
-            className={`project-card brutalist-card animate-slide-up delay-${index + 1}`}
-            style={{
-              opacity: isVisible ? 1 : 0,
-            }}
+            className={`animate-slide-up delay-${index + 1}`}
+            style={{ opacity: isVisible ? 1 : 0, display: 'contents' }}
           >
-            {/* Card Header */}
-            <div className="project-card__header">
-              <div className="project-card__type-row">
-                <span className={`badge ${project.badgeClass}`}>
-                  {project.type}
-                </span>
-                <span className="project-card__year">{project.year}</span>
-              </div>
-            </div>
-
-            {/* Card Body */}
-            <div className="project-card__body">
-              <h3 className="project-card__title">{project.title}</h3>
-
-              <p className="project-card__desc">{project.description}</p>
-
-              <div className="project-card__tags">
-                {project.tags.map((tag) => (
-                  <span key={tag} className="project-card__tag">{tag}</span>
-                ))}
+            {/* Inner: hover interaction only — no animation running here */}
+            <div
+              id={`project-card-${project.title.toLowerCase().replace(/\s+/g, '-')}`}
+              className="project-card"
+            >
+              {/* Card Header */}
+              <div className="project-card__header">
+                <div className="project-card__type-row">
+                  <span className={`badge ${project.badgeClass}`}>
+                    {project.type}
+                  </span>
+                  <span className="project-card__year">{project.year}</span>
+                </div>
               </div>
 
-              <div className="project-card__footer">
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="project-card__link"
-                  id={`project-link-${project.title.toLowerCase().replace(/\s+/g, '-')}`}
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  View on GitHub
-                  <ArrowUpRight size={12} />
-                </a>
+              {/* Card Body */}
+              <div className="project-card__body">
+                <h3 className="project-card__title">{project.title}</h3>
+
+                <p className="project-card__desc">{project.description}</p>
+
+                <div className="project-card__tags">
+                  {project.tags.map((tag) => (
+                    <span key={tag} className="project-card__tag">{tag}</span>
+                  ))}
+                </div>
+
+                <div className="project-card__footer">
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="project-card__link"
+                    id={`project-link-${project.title.toLowerCase().replace(/\s+/g, '-')}`}
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    View on GitHub
+                    <ArrowUpRight size={12} />
+                  </a>
+                </div>
               </div>
             </div>
           </div>

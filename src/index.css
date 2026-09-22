@@ -305,13 +305,8 @@ button {
 }
 
 /* ── Icon Hover Effects ── */
-.brutalist-btn:hover .btn-icon-arrow,
-.brutalist-btn-outline:hover .btn-icon-arrow {
-  transform: translate(3px, 3px);
-  transition: transform 0.15s var(--spring);
-}
-
-.brutalist-btn:hover .btn-icon-sparkle {
+.brutalist-btn:hover .btn-icon-sparkle,
+.brutalist-btn-outline:hover .btn-icon-sparkle {
   transform: rotate(25deg) scale(1.2);
   transition: transform 0.15s var(--spring);
 }
@@ -319,6 +314,8 @@ button {
 .btn-icon-arrow,
 .btn-icon-sparkle {
   transition: transform 0.15s var(--spring);
+  display: inline-flex;
+  align-items: center;
 }
 
 /* ══════════════════════════════════════════════════════
@@ -703,8 +700,10 @@ button {
 
 .project-card {
   position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
+  height: 100%;
   background: var(--surface);
   border: var(--border-width) solid var(--border-color);
   box-shadow: var(--shadow-md);
@@ -716,11 +715,13 @@ button {
 .project-card:hover {
   transform: translate(-3px, -3px) rotate(-0.5deg);
   box-shadow: var(--shadow-hover);
+  z-index: 10;
 }
 
 .project-card:active {
   transform: translate(3px, 3px);
   box-shadow: 0px 0px 0px var(--border-color);
+  z-index: 10;
 }
 
 .project-card__header {

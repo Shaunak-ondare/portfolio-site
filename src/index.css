@@ -68,38 +68,38 @@
   --breadcrumb-color: #94a3b8;
 }
 
-/* ── Dark Mode Overrides — AMOLED Black ── */
+/* ── Dark Mode Overrides — Soft Charcoal ── */
 html.dark {
-  /* Pure AMOLED black — pixels off = no power */
-  --bg-base: #000000;
-  --bg-dot-color: #111111;          /* near-invisible dots on true black */
-  --surface: #0a0a0a;               /* card surfaces: barely-there off-black */
-  --surface-alt: #000000;           /* alternating rows / header: pure black */
+  /* Soft charcoal — warm dark with a hint of blue, easy on the eyes */
+  --bg-base: #13132a;
+  --bg-dot-color: #1e1e3a;          /* subtle visible dots */
+  --surface: #1a1a30;               /* card surfaces: slightly lifted charcoal */
+  --surface-alt: #16162b;           /* alternating rows / header */
   --text-primary: #f1f5f9;
   --text-muted: #94a3b8;
-  --text-faint: #475569;
-  --border-color: #ffffff;          /* crisp white borders for max contrast */
+  --text-faint: #64748b;
+  --border-color: #a8b2d8;          /* soft blue-grey border — not harsh white */
   --shadow-sm: 3px 3px 0px var(--border-color);
   --shadow-md: 4px 4px 0px var(--border-color);
   --shadow-lg: 6px 6px 0px var(--border-color);
   --shadow-hover: 7px 7px 0px var(--border-color);
-  --titlebar-stripe-light: rgba(255,255,255,0.08);
-  --titlebar-stripe-dark: rgba(255,255,255,0.02);
-  --breadcrumb-color: #475569;
-  /* Badges — semi-transparent on pure black */
-  --badge-pdf-bg: rgba(190,18,60,0.18);
+  --titlebar-stripe-light: rgba(168,178,216,0.10);
+  --titlebar-stripe-dark: rgba(168,178,216,0.03);
+  --breadcrumb-color: #64748b;
+  /* Badges — semi-transparent on soft charcoal */
+  --badge-pdf-bg: rgba(190,18,60,0.22);
   --badge-pdf-text: #fca5a5;
-  --badge-docx-bg: rgba(3,105,161,0.18);
+  --badge-docx-bg: rgba(3,105,161,0.22);
   --badge-docx-text: #7dd3fc;
-  --badge-pptx-bg: rgba(194,65,12,0.18);
+  --badge-pptx-bg: rgba(194,65,12,0.22);
   --badge-pptx-text: #fdba74;
-  --badge-md-bg: rgba(4,120,87,0.18);
+  --badge-md-bg: rgba(4,120,87,0.22);
   --badge-md-text: #6ee7b7;
-  --badge-cloud-bg: rgba(109,40,217,0.18);
+  --badge-cloud-bg: rgba(109,40,217,0.22);
   --badge-cloud-text: #c4b5fd;
-  --badge-devsec-bg: rgba(146,64,14,0.18);
+  --badge-devsec-bg: rgba(146,64,14,0.22);
   --badge-devsec-text: #fde68a;
-  --badge-infra-bg: rgba(22,101,52,0.18);
+  --badge-infra-bg: rgba(22,101,52,0.22);
   --badge-infra-text: #86efac;
 }
 
